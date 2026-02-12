@@ -12,13 +12,23 @@
         .info-section { display: none; }
         .info-section.active { display: block; animation: fadeIn 0.5s; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .nav-item { cursor: pointer; }
+        
+        /* تحسين شكل الروابط والأيقونات */
         .social-links { display: flex; justify-content: center; gap: 12px; padding: 10px; }
-        .social-links a { font-size: 20px; transition: 0.3s; }
+        .social-links a { font-size: 20px; transition: 0.3s; color: #ffffff; text-decoration: none; }
         .social-links a:hover { transform: translateY(-3px); color: #d4af37; }
+        
+        /* إعدادات الماوس المخصص للموبايل (إخفاء الماوس المخصص في الشاشات اللمسية) */
+        @media (max-width: 900px) {
+            .cursor-dot, .cursor-outline { display: none !important; }
+            html, body { cursor: auto !important; }
+        }
     </style>
 </head>
 <body>
+
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
 
     <div class="main-wrapper">
         <nav class="sidebar">
@@ -57,9 +67,8 @@
                 <hr class="separator">
                 <div class="about-text">
                     <p>• <strong>مدرب تقني:</strong> المؤسسة العامة للتدريب التقني والمهني (TVTC).</p>
-                     <p>• <strong>موظف حكومي :</strong> بنك التنمية الاجتماعية  (TVTC).</p> 
-                        <p>• <strong>قطاع خاص  :</strong> شركة المسار للاتصالات وتقنية المعلومات المحدودة </p> 
-                   
+                    <p>• <strong>موظف حكومي:</strong> بنك التنمية الاجتماعية.</p> 
+                    <p>• <strong>قطاع خاص:</strong> شركة المسار للاتصالات وتقنية المعلومات المحدودة.</p> 
                 </div>
             </section>
 
@@ -67,7 +76,7 @@
                 <h2>الدورات التدريبية</h2>
                 <hr class="separator">
                 <div class="about-text">
-                    <p> حاصل على العديد من الدورات المتقدمة .</p>
+                    <p>حاصل على العديد من الدورات المتقدمة في الأمن السيبراني والتحليل الأمني.</p>
                 </div>
             </section>
 
@@ -75,9 +84,9 @@
                 <h2>المهارات التقنية</h2>
                 <hr class="separator">
                 <div class="about-text">
-                    
                     <p>• أمن الشبكات والأنظمة.</p>
                     <p>• التوعية الأمنية والتدريب التقني.</p>
+                    <p>• تحليل مخاطر الأمن السيبراني.</p>
                 </div>
             </section>
 
@@ -86,7 +95,7 @@
                 <hr class="separator">
                 <div class="about-text">
                     <p>يسعدني تواصلكم للاستشارات التقنية أو التعاون المهني.</p>
-                    <p>البريد الإلكتروني: <a href="mailto:sultanayedalotaibi@hotmail.com" style="color: #d4af37;">sultanayedalotaibi@hotmail.com</a></p>
+                    <p>البريد الإلكتروني: <a href="mailto:sultanayedalotaibi@hotmail.com" style="color: #d4af37; text-decoration: none;">sultanayedalotaibi@hotmail.com</a></p>
                 </div>
             </section>
 
@@ -113,27 +122,46 @@
     </div>
 
     <script>
+        // كود تبديل الأقسام
         function showSection(sectionId, event) {
-            // إخفاء جميع الأقسام
             const sections = document.querySelectorAll('.info-section');
             sections.forEach(s => s.classList.remove('active'));
 
-            // إزالة اللون النشط من الأزرار
             const navItems = document.querySelectorAll('.nav-item');
             navItems.forEach(n => n.classList.remove('active'));
 
-            // إظهار القسم المطلوب
             const targetSection = document.getElementById(sectionId);
             if (targetSection) {
                 targetSection.classList.add('active');
             }
 
-            // تفعيل الزر الذي تم الضغط عليه
             if (event && event.currentTarget) {
                 event.currentTarget.classList.add('active');
             }
         }
+
+        // كود تشغيل الماوس المخصص
+        const dot = document.querySelector(".cursor-dot");
+        const outline = document.querySelector(".cursor-outline");
+
+        window.addEventListener("mousemove", (e) => {
+            const posX = e.clientX;
+            const posY = e.clientY;
+
+            dot.style.left = `${posX}px`;
+            dot.style.top = `${posY}px`;
+
+            outline.animate({
+                left: `${posX}px`,
+                top: `${posY}px`
+            }, { duration: 400, fill: "forwards" });
+        });
+
+        // تأثير تكبير الماوس عند ملامسة العناصر التفاعلية
+        document.querySelectorAll('a, button, .nav-item').forEach(el => {
+            el.addEventListener('mouseenter', () => outline.classList.add('cursor-hover'));
+            el.addEventListener('mouseleave', () => outline.classList.remove('cursor-hover'));
+        });
     </script>
 </body>
 </html>
-
