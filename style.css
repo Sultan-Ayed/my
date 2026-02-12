@@ -131,6 +131,9 @@ h1 { font-size: 24px; font-weight: 700; margin: 10px 0; letter-spacing: 1px; }
 .link-item span {
     flex: 1;
     text-align: center;
+    font-size: 18px; /* حجم الخط الموحد */
+    font-weight: 700; /* جعل الخط عريض (Bold) مثل تواصل مباشر */
+    color: #ffffff;  /* التأكد من ثبات اللون الأبيض */
 }
 
 /* الماوس الذهبي */
@@ -152,3 +155,4 @@ h1 { font-size: 24px; font-weight: 700; margin: 10px 0; letter-spacing: 1px; }
 }
 .close-btn { position: absolute; top: 10px; right: 15px; font-size: 25px; cursor: pointer; color: var(--gold); }
 button.link-item { width: 100%; cursor: none; border: 1px solid var(--glass-border); }
+
