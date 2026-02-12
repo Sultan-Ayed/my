@@ -154,4 +154,33 @@
         });
     </script>
 </body>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <script>
+        const dot = document.querySelector(".cursor-dot");
+        const outline = document.querySelector(".cursor-outline");
+
+        window.addEventListener("mousemove", (e) => {
+            const posX = e.clientX;
+            const posY = e.clientY;
+
+            // تحديث مكان النقطة المركزية
+            dot.style.left = `${posX}px`;
+            dot.style.top = `${posY}px`;
+
+            // حركة انسيابية للدائرة المحيطة
+            outline.animate({
+                left: `${posX}px`,
+                top: `${posY}px`
+            }, { duration: 400, fill: "forwards" });
+        });
+
+        // تأثير التفاعل عند المرور على الأزرار والروابط
+        document.querySelectorAll('a, button, .nav-item').forEach(el => {
+            el.addEventListener('mouseenter', () => outline.classList.add('cursor-hover'));
+            el.addEventListener('mouseleave', () => outline.classList.remove('cursor-hover'));
+        });
+    </script>
 </html>
+
