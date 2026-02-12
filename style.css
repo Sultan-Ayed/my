@@ -7,24 +7,14 @@
     --text-dim: #a0a0a0;
 }
 
-/* إخفاء الماوس الأصلي لتفعيل الماوس المخصص */
+/* --- الماوس المخصص --- */
 html, body {
-    cursor: none !important;
-}
-
-body {
-    background-color: var(--bg-color);
-    color: var(--text-main);
-    font-family: 'Cairo', sans-serif;
+    cursor: none !important; /* إخفاء الماوس الأصلي */
     margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    padding: 0;
     direction: rtl;
 }
 
-/* --- ابتكار الماوس المخصص (Cyber Cursor) --- */
 .cursor-dot {
     width: 6px;
     height: 6px;
@@ -39,9 +29,9 @@ body {
 }
 
 .cursor-outline {
-    width: 40px;
-    height: 40px;
-    border: 1px solid rgba(212, 175, 55, 0.4);
+    width: 35px;
+    height: 35px;
+    border: 1px solid var(--accent-color);
     position: fixed;
     top: 0;
     left: 0;
@@ -49,24 +39,24 @@ body {
     border-radius: 50%;
     z-index: 9999;
     pointer-events: none;
-    transition: transform 0.15s ease-out, width 0.2s, height 0.2s;
 }
 
-/* تكبير الدائرة عند المرور على الأزرار */
-.cursor-hover {
-    width: 60px;
-    height: 60px;
-    background-color: rgba(212, 175, 55, 0.1);
-    border: 1px solid var(--accent-color);
+/* --- التنسيق العام --- */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Cairo', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
-/* --- الهيكل العام --- */
 .main-wrapper {
     display: flex;
     width: 95%;
     max-width: 1200px;
     gap: 20px;
-    height: auto;
     padding: 20px;
 }
 
@@ -83,7 +73,7 @@ body {
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
-.nav-item { color: #444; text-align: center; transition: 0.3s; }
+.nav-item { color: #444; text-align: center; cursor: none; transition: 0.3s; }
 .nav-item i { font-size: 24px; display: block; margin-bottom: 5px; }
 .nav-item span { font-size: 10px; }
 .nav-item.active { color: var(--accent-color); }
@@ -95,35 +85,19 @@ body {
     gap: 20px;
 }
 
-/* قسم المعلومات */
 .info-section {
     flex: 1.5;
     background-color: var(--card-bg);
     border-radius: 20px;
     padding: 40px;
     text-align: right;
+    display: none;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    display: none; /* مخفي افتراضياً ليعمل الجافا سكريبت */
 }
 
-.info-section.active {
-    display: block;
-    animation: fadeIn 0.5s ease-in-out;
-}
+.info-section.active { display: block; animation: fadeIn 0.5s; }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.info-section h2 { 
-    font-size: 28px; 
-    border-bottom: 3px solid var(--accent-color); 
-    display: inline-block; 
-    margin-bottom: 30px;
-}
-
-.info-section p { line-height: 1.8; color: var(--text-dim); font-size: 17px; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
 /* بطاقة التعريف الشخصية */
 .profile-card {
@@ -135,8 +109,37 @@ body {
     flex-direction: column;
     text-align: center;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    z-index: 10;
 }
 
 .profile-header {
     background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1000&auto=format&fit=crop');
+    background-size: cover;
+    padding: 40px 20px;
+}
+
+.avatar {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    border: 3px solid var(--accent-color);
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.social-links { margin: 20px 0; display: flex; justify-content: center; gap: 15px; }
+.social-links a { color: #fff; font-size: 20px; transition: 0.3s; }
+.social-links a:hover { color: var(--accent-color); }
+
+.card-footer { margin-top: auto; display: flex; border-top: 1px solid #282828; }
+.btn { flex: 1; padding: 15px; border: none; background: none; color: #fff; font-family: 'Cairo'; font-weight: bold; transition: 0.3s; }
+.btn-primary { border-left: 1px solid #282828; }
+.btn:hover { background-color: var(--accent-color); color: #000; }
+
+/* التجاوب مع الجوال */
+@media (max-width: 900px) {
+    .main-wrapper, .content-container { flex-direction: column; height: auto; }
+    .sidebar { width: 100%; flex-direction: row; justify-content: space-around; height: auto; padding: 10px 0; }
+    .profile-card { order: -1; }
+    html, body { cursor: auto !important; }
+    .cursor-dot, .cursor-outline { display: none !important; }
+}
