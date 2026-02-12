@@ -7,6 +7,11 @@
     --text-dim: #a0a0a0;
 }
 
+/* إخفاء الماوس الأصلي لتفعيل الماوس المخصص */
+html, body {
+    cursor: none !important;
+}
+
 body {
     background-color: var(--bg-color);
     color: var(--text-main);
@@ -19,6 +24,43 @@ body {
     direction: rtl;
 }
 
+/* --- ابتكار الماوس المخصص (Cyber Cursor) --- */
+.cursor-dot {
+    width: 6px;
+    height: 6px;
+    background-color: var(--accent-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 10000;
+    pointer-events: none;
+}
+
+.cursor-outline {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 9999;
+    pointer-events: none;
+    transition: transform 0.15s ease-out, width 0.2s, height 0.2s;
+}
+
+/* تكبير الدائرة عند المرور على الأزرار */
+.cursor-hover {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(212, 175, 55, 0.1);
+    border: 1px solid var(--accent-color);
+}
+
+/* --- الهيكل العام --- */
 .main-wrapper {
     display: flex;
     width: 95%;
@@ -41,7 +83,7 @@ body {
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
-.nav-item { color: #444; text-align: center; cursor: pointer; transition: 0.3s; }
+.nav-item { color: #444; text-align: center; transition: 0.3s; }
 .nav-item i { font-size: 24px; display: block; margin-bottom: 5px; }
 .nav-item span { font-size: 10px; }
 .nav-item.active { color: var(--accent-color); }
@@ -53,7 +95,7 @@ body {
     gap: 20px;
 }
 
-/* قسم النبذة */
+/* قسم المعلومات */
 .info-section {
     flex: 1.5;
     background-color: var(--card-bg);
@@ -61,6 +103,17 @@ body {
     padding: 40px;
     text-align: right;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    display: none; /* مخفي افتراضياً ليعمل الجافا سكريبت */
+}
+
+.info-section.active {
+    display: block;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .info-section h2 { 
@@ -72,7 +125,7 @@ body {
 
 .info-section p { line-height: 1.8; color: var(--text-dim); font-size: 17px; }
 
-/* بطاقة التعريف (المشكلة كانت هنا) */
+/* بطاقة التعريف الشخصية */
 .profile-card {
     flex: 1;
     background-color: var(--card-bg);
@@ -86,36 +139,4 @@ body {
 }
 
 .profile-header {
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1000&auto=format&fit=crop');
-    background-size: cover;
-    padding: 50px 20px;
-}
-
-.avatar {
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    border: 5px solid var(--card-bg);
-    object-fit: cover;
-    margin-bottom: 15px;
-    background-color: #333;
-}
-
-.profile-card h3 { margin: 15px 0 5px; font-size: 22px; color: #fff; }
-.tagline { color: var(--accent-color); font-size: 14px; letter-spacing: 1px; }
-
-.social-links { margin: 25px 0; display: flex; justify-content: center; gap: 20px; }
-.social-links a { color: var(--text-main); font-size: 20px; transition: 0.3s; }
-.social-links a:hover { color: var(--accent-color); transform: translateY(-3px); }
-
-.card-footer { margin-top: auto; display: flex; border-top: 1px solid #282828; }
-.btn { flex: 1; padding: 20px; border: none; background: none; color: #fff; cursor: pointer; font-family: 'Cairo'; transition: 0.3s; font-weight: bold; }
-.btn-primary { border-left: 1px solid #282828; }
-.btn:hover { background-color: var(--accent-color); color: #000; }
-
-/* التجاوب مع الجوال */
-@media (max-width: 900px) {
-    .main-wrapper, .content-container { flex-direction: column; height: auto; }
-    .sidebar { width: 100%; flex-direction: row; justify-content: space-around; height: auto; }
-    .profile-card { order: -1; } /* البطاقة تظهر بالأعلى في الجوال */
-}
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1000&auto=format&fit=crop');
