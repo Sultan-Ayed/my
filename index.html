@@ -56,11 +56,39 @@
     </div>
 
     <script>
-        // كود تشغيل النوافذ المنبثقة
-        const content = {
-            about: "<h2>نبذة عني</h2><p>المهندس سلطان بن عايد، باحث مختص في الأمن السيبراني، حاصل على الماجستير بمرتبة الشرف الأولى...</p>",
-            edu: "<h2>المؤهلات العلمية</h2><p>ماجستير الأمن السيبراني - جامعة UTS أستراليا</p>",
-            exp: "<h2>الخبرات العملية</h2><p>باحث ومختص في أمن المعلومات والأنظمة الذكية...</p>"
+        // كود المحتوى التفاعلي للأزرار
+const content = {
+    about: `
+        <i class="fas fa-shield-halved" style="font-size: 40px; color: #d4af37; margin-bottom: 15px;"></i>
+        <h2>نبذة عني</h2>
+        <p style="line-height: 1.8; text-align: justify;">
+            المهندس سلطان بن عايد، باحث ومختص في الأمن السيبراني. أمتلك شغفاً عميقاً بتحليل التهديدات وتطوير الأنظمة الدفاعية الذكية. أركز في عملي على سد الفجوات الرقمية وتحويل التحديات الأمنية المعقدة إلى بيئات تقنية آمنة ومستقرة.
+        </p>
+    `,
+    edu: `
+        <i class="fas fa-user-graduate" style="font-size: 40px; color: #d4af37; margin-bottom: 15px;"></i>
+        <h2>المؤهلات العلمية</h2>
+        <ul style="list-style: none; padding: 0; line-height: 2;">
+            <li><strong>ماجستير الأمن السيبراني</strong></li>
+            <li>بمرتبة الشرف الأولى</li>
+            <li>جامعة سيدني للتكنولوجيا (UTS) - أستراليا</li>
+        </ul>
+    `,
+    exp: `
+        <i class="fas fa-laptop-code" style="font-size: 40px; color: #d4af37; margin-bottom: 15px;"></i>
+        <h2>الخبرات العملية</h2>
+        <p style="line-height: 1.8;">
+            باحث ومختص في أمن المعلومات، عملت على مشاريع تقنية متقدمة تشمل تحليل الثغرات، حماية الشبكات، وتطوير استراتيجيات الاستجابة للحوادث السيبرانية وفق المعايير العالمية.
+        </p>
+    `
+};
+
+// دالة فتح النافذة المنبثقة
+function openPopup(id) {
+    const popupBody = document.getElementById('popupBody');
+    popupBody.innerHTML = content[id];
+    document.getElementById('popupOverlay').classList.add('active');
+}
         };
 
         function openPopup(id) {
@@ -83,3 +111,4 @@
     </script>
 </body>
 </html>
+
