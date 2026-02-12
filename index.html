@@ -15,7 +15,7 @@
 
     <div class="bio-container">
         <div class="profile-wrapper">
-            <img src="./profile1.jpg" alt="Sultan Ayed" class="profile-img">
+            <img src="profile1.jpg" alt="Sultan Ayed" class="profile-img">
         </div>
         
         <h1>سلطان بن عايد <i class="fas fa-check-circle verified"></i></h1>
@@ -41,9 +41,13 @@
                 <i class="fas fa-laptop-code"></i>
                 <span>الخبرات العملية</span>
             </button>
-            <a href="./Sultan_CV.pdf" class="link-item" target="_blank">
+            <a href="Sultan_CV.pdf" class="link-item" target="_blank">
                 <i class="fas fa-file-pdf"></i>
                 <span>السيرة الذاتية (CV)</span>
+            </a>
+            <a href="mailto:sultanayedalotaibi@hotmail.com" class="link-item">
+                <i class="fas fa-envelope-open-text"></i>
+                <span>تواصل مباشر</span>
             </a>
         </div>
     </div>
@@ -56,51 +60,44 @@
     </div>
 
     <script>
-        // كود المحتوى التفاعلي للأزرار
-const content = {
-    about: `
-        <i class="fas fa-shield-halved" style="font-size: 40px; color: #d4af37; margin-bottom: 15px;"></i>
-        <h2>نبذة عني</h2>
-        <p style="line-height: 1.8; text-align: justify;">
-            المهندس سلطان بن عايد، باحث ومختص في الأمن السيبراني. أمتلك شغفاً عميقاً بتحليل التهديدات وتطوير الأنظمة الدفاعية الذكية. أركز في عملي على سد الفجوات الرقمية وتحويل التحديات الأمنية المعقدة إلى بيئات تقنية آمنة ومستقرة.
-        </p>
-    `,
-    edu: `
-        <i class="fas fa-user-graduate" style="font-size: 40px; color: #d4af37; margin-bottom: 15px;"></i>
-        <h2>المؤهلات العلمية</h2>
-        <ul style="list-style: none; padding: 0; line-height: 2;">
-            <li><strong>ماجستير الأمن السيبراني</strong></li>
-            <li>بمرتبة الشرف الأولى</li>
-            <li>جامعة سيدني للتكنولوجيا (UTS) - أستراليا</li>
-        </ul>
-    `,
-    exp: `
-        <i class="fas fa-laptop-code" style="font-size: 40px; color: #d4af37; margin-bottom: 15px;"></i>
-        <h2>الخبرات العملية</h2>
-        <p style="line-height: 1.8;">
-            باحث ومختص في أمن المعلومات، عملت على مشاريع تقنية متقدمة تشمل تحليل الثغرات، حماية الشبكات، وتطوير استراتيجيات الاستجابة للحوادث السيبرانية وفق المعايير العالمية.
-        </p>
-    `
-};
-
-// دالة فتح النافذة المنبثقة
-function openPopup(id) {
-    const popupBody = document.getElementById('popupBody');
-    popupBody.innerHTML = content[id];
-    document.getElementById('popupOverlay').classList.add('active');
-}
+        // النصوص الكاملة للأزرار
+        const content = {
+            about: `
+                <i class="fas fa-shield-halved" style="font-size: 40px; color: #d4af37; margin-bottom: 15px;"></i>
+                <h2 style="color:#d4af37">نبذة عني</h2>
+                <p style="line-height: 1.8; text-align: justify; font-size: 15px;">
+                    المهندس سلطان بن عايد، باحث ومختص في الأمن السيبراني. أمتلك شغفاً عميقاً بتحليل التهديدات وتطوير الأنظمة الدفاعية الذكية. أركز في عملي على سد الفجوات الرقمية وتحويل التهديدات السيبرانية المعقدة إلى بيئات تقنية آمنة.
+                </p>
+            `,
+            edu: `
+                <i class="fas fa-user-graduate" style="font-size: 40px; color: #d4af37; margin-bottom: 15px;"></i>
+                <h2 style="color:#d4af37">المؤهلات العلمية</h2>
+                <p style="line-height: 2;">
+                    <strong>ماجستير الأمن السيبراني</strong><br>
+                    بمرتبة الشرف الأولى<br>
+                    جامعة سيدني للتكنولوجيا (UTS) - أستراليا
+                </p>
+            `,
+            exp: `
+                <i class="fas fa-laptop-code" style="font-size: 40px; color: #d4af37; margin-bottom: 15px;"></i>
+                <h2 style="color:#d4af37">الخبرات العملية</h2>
+                <p style="line-height: 1.8; font-size: 15px;">
+                    باحث ومختص في أمن المعلومات، عملت على مشاريع تقنية متقدمة تشمل تحليل الثغرات، حماية الشبكات، وتطوير استراتيجيات الاستجابة للحوادث السيبرانية وفق المعايير العالمية.
+                </p>
+            `
         };
 
         function openPopup(id) {
-            document.getElementById('popupBody').innerHTML = content[id];
-            document.getElementById('popupOverlay').classList.add('active');
+            const popupBody = document.getElementById('popupBody');
+            popupBody.innerHTML = content[id];
+            document.getElementById('popupOverlay').style.display = 'flex';
         }
 
         function closePopup() {
-            document.getElementById('popupOverlay').classList.remove('active');
+            document.getElementById('popupOverlay').style.display = 'none';
         }
 
-        // كود الماوس
+        // كود الماوس الذهبي
         const dot = document.querySelector(".cursor-dot");
         const outline = document.querySelector(".cursor-outline");
         window.addEventListener("mousemove", (e) => {
@@ -111,4 +108,3 @@ function openPopup(id) {
     </script>
 </body>
 </html>
-
