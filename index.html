@@ -8,58 +8,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* --- كود الماوس المخصص (إجباري) --- */
-        html, body {
-            cursor: none !important; /* إخفاء الماوس الأصلي */
-        }
-
+        /* إخفاء الماوس الأصلي */
+        html, body { cursor: none !important; margin: 0; padding: 0; }
+        
+        /* تنسيق الماوس الذهبي */
         .cursor-dot {
-            width: 6px;
-            height: 6px;
-            background-color: #d4af37; /* لون ذهبي */
-            position: fixed;
-            top: 0;
-            left: 0;
-            transform: translate(-50%, -50%);
-            border-radius: 50%;
-            z-index: 10000;
-            pointer-events: none;
+            width: 6px; height: 6px; background-color: #d4af37;
+            position: fixed; top: 0; left: 0; transform: translate(-50%, -50%);
+            border-radius: 50%; z-index: 10000; pointer-events: none;
         }
-
         .cursor-outline {
-            width: 40px;
-            height: 40px;
-            border: 2px solid rgba(212, 175, 55, 0.5);
-            position: fixed;
-            top: 0;
-            left: 0;
-            transform: translate(-50%, -50%);
-            border-radius: 50%;
-            z-index: 9999;
-            pointer-events: none;
-            transition: transform 0.1s ease-out;
+            width: 35px; height: 35px; border: 1px solid #d4af37;
+            position: fixed; top: 0; left: 0; transform: translate(-50%, -50%);
+            border-radius: 50%; z-index: 9999; pointer-events: none;
         }
-
-        /* تأثير عند الوقوف على الأزرار */
-        .cursor-hover {
-            transform: translate(-50%, -50%) scale(1.5);
-            background-color: rgba(212, 175, 55, 0.1);
-            border-color: #d4af37;
-        }
-
-        /* تنسيقات الأقسام */
+        
+        /* منع لخبطة المحتوى */
         .info-section { display: none; }
         .info-section.active { display: block; animation: fadeIn 0.5s; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        
-        .social-links { display: flex; justify-content: center; gap: 12px; padding: 10px; }
-        .social-links a { font-size: 20px; transition: 0.3s; color: #fff; text-decoration: none; }
-        .social-links a:hover { transform: translateY(-3px); color: #d4af37; }
-
-        @media (max-width: 900px) {
-            .cursor-dot, .cursor-outline { display: none !important; }
-            html, body { cursor: auto !important; }
-        }
     </style>
 </head>
 <body>
@@ -80,107 +47,48 @@
         <div class="content-container">
             <section id="about" class="info-section active">
                 <h2>نبذة عني</h2>
-                <hr class="separator">
+                <hr>
                 <div class="about-text">
-                    <p>" أنا المهندس سلطان بن عايد، حاصل على درجة الماجستير في الأمن السيبراني، بمرتبة الشرف الأولى من جامعة University of Technology Sydney الأسترالية.</p>
+                    <p>" أنا المهندس سلطان بن عايد، حاصل على درجة الماجستير في الأمن السيبراني بمرتبة الشرف الأولى..."</p>
+                    <p>المنطقة: الرياض</p>
                 </div>
-                <div class="personal-details-grid">
-                    <div class="detail-box"><i class="fa fa-map-marker-alt"></i> <span> المملكة العربية السعودية، الرياض</span></div>
-                </div>
-            </section>
-
-            <section id="education" class="info-section">
-                <h2>المؤهلات العلمية</h2>
-                <p>• ماجستير في الأمن السيبراني - UTS أستراليا.</p>
-            </section>
-            
-            <section id="experience" class="info-section">
-                <h2>الخبرات العملية</h2>
-                <p>• مدرب تقني - المؤسسة العامة للتدريب التقني والمهني.</p>
-            </section>
-
-            <section id="contact" class="info-section">
-                <h2>تواصل معي</h2>
-                <p>البريد: sultanayedalotaibi@hotmail.com</p>
             </section>
 
             <aside class="profile-card">
                 <div class="profile-header">
-                    <img src="profile.jpg" alt="Sultan" class="avatar">
+                    <img src="profile1.jpg" alt="Sultan" class="avatar">
                     <h3>Eng: Sultan Bin Ayed</h3>
                     <p class="tagline">Cybersecurity Expert</p>
                 </div>
                 <div class="social-links">
-                    <a href="https://x.com/SU2TAN" target="_blank"><i class="fab fa-x-twitter"></i></a>
-                    <a href="https://snapchat.com/t/JUVDv1Kr" target="_blank"><i class="fab fa-snapchat"></i></a>
-                    <a href="https://linkedin.com/in/sultan-ayed-6502aa156" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/Sultan-Ayed" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
                 </div>
                 <div class="card-footer">
-                    <button class="btn btn-primary" onclick="showSection('contact', event)">Contact Me</button>
                     <button class="btn btn-secondary">Download CV</button>
+                    <button class="btn btn-primary" onclick="showSection('contact', event)">Contact Me</button>
                 </div>
             </aside>
         </div>
     </div>
 
     <script>
-        // تبديل الأقسام
+        // كود حركة الماوس
+        const dot = document.querySelector(".cursor-dot");
+        const outline = document.querySelector(".cursor-outline");
+        window.addEventListener("mousemove", (e) => {
+            dot.style.left = e.clientX + "px";
+            dot.style.top = e.clientY + "px";
+            outline.animate({ left: e.clientX + "px", top: e.clientY + "px" }, { duration: 400, fill: "forwards" });
+        });
+
+        // كود تبديل الأقسام
         function showSection(sectionId, event) {
             document.querySelectorAll('.info-section').forEach(s => s.classList.remove('active'));
             document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
             document.getElementById(sectionId).classList.add('active');
             if (event) event.currentTarget.classList.add('active');
         }
-
-        // حركة الماوس المخصص
-        const dot = document.querySelector(".cursor-dot");
-        const outline = document.querySelector(".cursor-outline");
-
-        window.addEventListener("mousemove", (e) => {
-            dot.style.left = e.clientX + "px";
-            dot.style.top = e.clientY + "px";
-            
-            outline.animate({
-                left: e.clientX + "px",
-                top: e.clientY + "px"
-            }, { duration: 500, fill: "forwards" });
-        });
-
-        // تأثير التكبير عند ملامسة الأزرار
-        document.querySelectorAll('a, button, .nav-item').forEach(el => {
-            el.addEventListener('mouseenter', () => outline.classList.add('cursor-hover'));
-            el.addEventListener('mouseleave', () => outline.classList.remove('cursor-hover'));
-        });
     </script>
 </body>
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
-
-    <script>
-        const dot = document.querySelector(".cursor-dot");
-        const outline = document.querySelector(".cursor-outline");
-
-        window.addEventListener("mousemove", (e) => {
-            const posX = e.clientX;
-            const posY = e.clientY;
-
-            // تحديث مكان النقطة المركزية
-            dot.style.left = `${posX}px`;
-            dot.style.top = `${posY}px`;
-
-            // حركة انسيابية للدائرة المحيطة
-            outline.animate({
-                left: `${posX}px`,
-                top: `${posY}px`
-            }, { duration: 400, fill: "forwards" });
-        });
-
-        // تأثير التفاعل عند المرور على الأزرار والروابط
-        document.querySelectorAll('a, button, .nav-item').forEach(el => {
-            el.addEventListener('mouseenter', () => outline.classList.add('cursor-hover'));
-            el.addEventListener('mouseleave', () => outline.classList.remove('cursor-hover'));
-        });
-    </script>
 </html>
-
