@@ -7,42 +7,81 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* ستايل إضافي لضمان عمل التنقل بسلاسة */
+        .info-section { display: none; }
+        .info-section.active { display: block; animation: fadeIn 0.5s; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .nav-item { cursor: pointer; }
+    </style>
 </head>
 <body>
 
     <div class="main-wrapper">
         <nav class="sidebar">
-            <div class="nav-item active"><i class="fa fa-user"></i><span>نبذة عني</span></div>
-            <div class="nav-item"><i class="fa fa-graduation-cap"></i><span>المؤهلات</span></div>
-            <div class="nav-item"><i class="fa fa-briefcase"></i><span>الخبرات</span></div>
-            <div class="nav-item"><i class="fa fa-certificate"></i><span>الدورات</span></div>
-            <div class="nav-item"><i class="fa fa-code"></i><span>المهارات</span></div>
-            <div class="nav-item"><i class="fa fa-envelope"></i><span>التواصل</span></div>
+            <div class="nav-item active" onclick="showSection('about')"><i class="fa fa-user"></i><span>نبذة عني</span></div>
+            <div class="nav-item" onclick="showSection('education')"><i class="fa fa-graduation-cap"></i><span>المؤهلات</span></div>
+            <div class="nav-item" onclick="showSection('experience')"><i class="fa fa-briefcase"></i><span>الخبرات</span></div>
+            <div class="nav-item" onclick="showSection('courses')"><i class="fa fa-certificate"></i><span>الدورات</span></div>
+            <div class="nav-item" onclick="showSection('skills')"><i class="fa fa-code"></i><span>المهارات</span></div>
+            <div class="nav-item" onclick="showSection('contact')"><i class="fa fa-envelope"></i><span>التواصل</span></div>
         </nav>
 
         <div class="content-container">
-            <section class="info-section">
+            <section id="about" class="info-section active">
                 <h2>نبذة عني</h2>
                 <hr class="separator">
                 <div class="about-text">
-                    <p>
-                        "أنا المهندس سلطان بن عايد، حاصل على درجة الماجستير في الأمن السيبراني، بمرتبة الشرف الأولى من جامعة سيدني للتكنولوجيا (UTS) في أستراليا. 
-                        أمتلك شغفاً بتطوير حلول أمنية ذكية تواكب التحديات الرقمية المتسارعة، وتحويل التهديدات إلى فرص آمنة برؤية استباقية.
-                    </p>
-                    <p>
-                        أطمح دائماً إلى رفع سقف الحلول الأمنية، من خلال مواكبة أحدث التقنيات والمشاركة الفعالة في صنع مستقبل رقمي أكثر أماناً واستدامة للأجيال القادمة."
-                    </p>
+                    <p>"أنا المهندس سلطان بن عايد، حاصل على درجة الماجستير في الأمن السيبراني بمرتبة الشرف الأولى من جامعة سيدني للتكنولوجيا (UTS) في أستراليا. أمتلك شغفاً بتطوير حلول أمنية ذكية تواكب التحديات الرقمية المتسارعة."</p>
                 </div>
-                
                 <div class="personal-details-grid">
-                    <div class="detail-box">
-                        <i class="fa fa-id-card"></i>
-                        <span>العمر: 35</span>
-                    </div>
-                    <div class="detail-box">
-                        <i class="fa fa-map-marker-alt"></i>
-                        <span>المنطقة: الرياض</span>
-                    </div>
+                    <div class="detail-box"><i class="fa fa-id-card"></i> <span>العمر: 35</span></div>
+                    <div class="detail-box"><i class="fa fa-map-marker-alt"></i> <span>المنطقة: الرياض</span></div>
+                </div>
+            </section>
+
+            <section id="education" class="info-section">
+                <h2>المؤهلات العلمية</h2>
+                <hr class="separator">
+                <div class="about-text">
+                    <p>• <strong>ماجستير في الأمن السيبراني:</strong> جامعة سيدني للتكنولوجيا (UTS) - أستراليا (مرتبة الشرف الأولى).</p>
+                    <p>• <strong>بكالوريوس هندسة الحاسب:</strong> المملكة العربية السعودية.</p>
+                </div>
+            </section>
+
+            <section id="experience" class="info-section">
+                <h2>الخبرات العملية</h2>
+                <hr class="separator">
+                <div class="about-text">
+                    <p>• <strong>مدرب تقني:</strong> المؤسسة العامة للتدريب التقني والمهني (TVTC).</p>
+                    <p>• <strong>خبير وباحث:</strong> متخصص في استراتيجيات الأمن السيبراني والتحليل الأمني.</p>
+                </div>
+            </section>
+
+            <section id="courses" class="info-section">
+                <h2>الدورات التدريبية</h2>
+                <hr class="separator">
+                <div class="about-text">
+                    <p>حاصل على مجموعة من الشهادات الاحترافية والدورات المتقدمة في حماية البيانات واختبار الاختراق.</p>
+                </div>
+            </section>
+
+            <section id="skills" class="info-section">
+                <h2>المهارات التقنية</h2>
+                <hr class="separator">
+                <div class="about-text">
+                    <p>• تحليل الثغرات الأمنية.</p>
+                    <p>• أمن الشبكات والأنظمة.</p>
+                    <p>• التوعية الأمنية والتدريب التقني.</p>
+                </div>
+            </section>
+
+            <section id="contact" class="info-section">
+                <h2>تواصل معي</h2>
+                <hr class="separator">
+                <div class="about-text">
+                    <p>يسعدني تواصلكم للاستشارات التقنية أو التعاون المهني.</p>
+                    <p>البريد الإلكتروني: sultan@example.com</p>
                 </div>
             </section>
 
@@ -58,11 +97,29 @@
                     <a href="https://github.com/Sultan-Ayed" target="_blank"><i class="fab fa-github"></i></a>
                 </div>
                 <div class="card-footer">
-                    <button class="btn btn-primary">Contact Me</button>
+                    <button class="btn btn-primary" onclick="showSection('contact')">Contact Me</button>
                     <button class="btn btn-secondary">Download CV</button>
                 </div>
             </aside>
         </div>
     </div>
 
+    <script>
+        function showSection(sectionId) {
+            // إخفاء جميع الأقسام
+            const sections = document.querySelectorAll('.info-section');
+            sections.forEach(s => s.classList.remove('active'));
+
+            // إزالة اللون الذهبي من جميع الأزرار
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(n => n.classList.remove('active'));
+
+            // إظهار القسم المطلوب
+            document.getElementById(sectionId).classList.add('active');
+
+            // تفعيل الزر المناسب (عبر البحث عن النص أو الترتيب)
+            event.currentTarget.classList.add('active');
+        }
+    </script>
 </body>
+</html>
