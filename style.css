@@ -1,10 +1,9 @@
-/* تنسيقات عامة للموقع */
 :root {
-    --bg-color: #1a1a1a;
-    --card-bg: #222222;
+    --bg-color: #111111;
+    --card-bg: #1a1a1a;
     --accent-color: #d4af37; /* اللون الذهبي */
-    --text-color: #e0e0e0;
-    --sidebar-bg: #111111;
+    --text-color: #ffffff;
+    --secondary-text: #b0b0b0;
 }
 
 body {
@@ -22,66 +21,52 @@ body {
     display: flex;
     width: 95%;
     max-width: 1100px;
+    gap: 20px;
     height: 85vh;
-    gap: 15px;
 }
 
-/* القائمة الجانبية السوداء */
+/* القائمة الجانبية */
 .sidebar {
-    background-color: var(--sidebar-bg);
-    width: 80px;
-    border-radius: 12px;
+    background-color: var(--card-bg);
+    padding: 20px 10px;
+    border-radius: 15px;
     display: flex;
     flex-direction: column;
+    gap: 25px;
+    width: 70px;
     align-items: center;
-    padding: 20px 0;
-    gap: 30px;
 }
 
-.nav-item {
-    color: #666;
-    text-align: center;
-    font-size: 10px;
-    cursor: pointer;
-    transition: 0.3s;
-}
+.nav-item { color: #666; text-align: center; cursor: pointer; font-size: 10px; }
+.nav-item i { display: block; font-size: 20px; margin-bottom: 5px; }
+.nav-item.active { color: var(--accent-color); }
 
-.nav-item i { font-size: 22px; display: block; margin-bottom: 5px; }
-.nav-item.active, .nav-item:hover { color: var(--accent-color); }
+/* حاوية المحتوى والبطاقة */
+.content-container { display: flex; flex: 1; gap: 20px; }
 
-/* حاوية المحتوى الرئيسي */
-.content-container {
-    display: flex;
-    flex: 1;
-    gap: 15px;
-}
-
-/* قسم المعلومات (النبذة) */
 .info-section {
-    flex: 1.5;
+    flex: 2;
     background-color: var(--card-bg);
-    border-radius: 12px;
     padding: 40px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border-radius: 15px;
+    text-align: right;
 }
 
-.info-section h2 { border-bottom: 2px solid var(--accent-color); display: inline-block; padding-bottom: 5px; }
+.info-section h2 { border-bottom: 2px solid var(--accent-color); display: inline-block; padding-bottom: 10px; }
 
-/* بطاقة التعريف الجانبية */
+/* بطاقة التعريف */
 .profile-card {
-    flex: 1;
+    flex: 1.2;
     background-color: var(--card-bg);
-    border-radius: 12px;
-    overflow: hidden;
+    border-radius: 15px;
     text-align: center;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
 .profile-header {
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://via.placeholder.com/400x200'); /* خلفية تقنية */
-    background-size: cover;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://via.placeholder.com/400x200');
     padding: 40px 20px;
 }
 
@@ -89,23 +74,15 @@ body {
     width: 140px;
     height: 140px;
     border-radius: 50%;
-    border: 4px solid var(--card-bg);
+    border: 4px solid var(--accent-color);
     margin-bottom: 15px;
     object-fit: cover;
 }
 
 .social-links { margin: 20px 0; display: flex; justify-content: center; gap: 15px; }
-.social-links a { color: var(--text-color); font-size: 18px; transition: 0.3s; }
-.social-links a:hover { color: var(--accent-color); }
+.social-links a { color: var(--text-color); font-size: 20px; }
 
-.card-footer {
-    margin-top: auto;
-    display: flex;
-    border-top: 1px solid #333;
-}
-
-.btn {
-    flex: 1;
-    padding: 15px;
-    border: none
-
+.card-footer { margin-top: auto; display: flex; border-top: 1px solid #333; }
+.btn { flex: 1; padding: 15px; border: none; background: none; color: #fff; cursor: pointer; font-family: 'Cairo'; }
+.btn-primary { border-left: 1px solid #333; background-color: rgba(212, 175, 55, 0.1); }
+.btn:hover { background-color: var(--accent-color); color: #000; }
