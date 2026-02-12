@@ -8,19 +8,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* ستايل إضافي لضمان عمل التنقل بسلاسة */
+        /* ستايل لضمان التنقل وسلاسة الأيقونات */
         .info-section { display: none; }
         .info-section.active { display: block; animation: fadeIn 0.5s; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         .nav-item { cursor: pointer; }
+        .social-links { display: flex; justify-content: center; gap: 12px; padding: 10px; }
+        .social-links a { font-size: 20px; transition: 0.3s; }
+        .social-links a:hover { transform: translateY(-3px); color: #d4af37; }
     </style>
 </head>
 <body>
 
     <div class="main-wrapper">
         <nav class="sidebar">
-            <div class="nav-item active" onclick="showSection('about')"><i class="fa fa-user"></i><span>نبذة عني</span></div>
-           
+            <div class="nav-item active" onclick="showSection('about', event)"><i class="fa fa-user"></i><span>نبذة عني</span></div>
+            <div class="nav-item" onclick="showSection('education', event)"><i class="fa fa-graduation-cap"></i><span>المؤهلات</span></div>
+            <div class="nav-item" onclick="showSection('experience', event)"><i class="fa fa-briefcase"></i><span>الخبرات</span></div>
+            <div class="nav-item" onclick="showSection('courses', event)"><i class="fa fa-certificate"></i><span>الدورات</span></div>
+            <div class="nav-item" onclick="showSection('skills', event)"><i class="fa fa-code"></i><span>المهارات</span></div>
+            <div class="nav-item" onclick="showSection('contact', event)"><i class="fa fa-envelope"></i><span>التواصل</span></div>
         </nav>
 
         <div class="content-container">
@@ -28,17 +35,11 @@
                 <h2>نبذة عني</h2>
                 <hr class="separator">
                 <div class="about-text">
-                    <p>" أنا المهندس سلطان بن عايد، حاصل على درجة الماجستير في الأمن السيبراني، بمرتبة الشرف الأولى من جامعة University of Technology Sydney الأسترالية (إحدى أفضل 100 جامعة عالميًا).
-
-أمتلك شغفًا بتطوير حلول أمنية ذكية تواكب التحديات الرقمية المتسارعة، وتحوِّل التهديدات إلى فرص آمنة. برؤيةٍ استباقية، مهتم ببناء أنظمة حماية متطورة تصون البيانات والخصوصية في عالمٍ تتخطى فيه الحدود التقنية كل التوقعات.
-
-أحاول أن أدمج بين الخبرة الأكاديمية والعملية، وأساهم في تعزيز الوعي الأمني، لأني أؤمن بأن الأمن السيبراني ليس تقنية فحسب، بل خط دفاع وطني واقتصادي في العصر الرقمي.
-
-أطمح دائمًا إلى رفع سقف الحلول الأمنية، من خلال مواكبة أحدث التقنيات والمشاركة الفعالة في صنع مستقبل رقمي أكثر أمانًا واستدامةً للأجيال القادمة."</p>
+                    <p>" أنا المهندس سلطان بن عايد، حاصل على درجة الماجستير في الأمن السيبراني، بمرتبة الشرف الأولى من جامعة University of Technology Sydney الأسترالية (إحدى أفضل 100 جامعة عالميًا).</p>
+                    <p>أمتلك شغفًا بتطوير حلول أمنية ذكية تواكب التحديات الرقمية المتسارعة، وتحوِّل التهديدات إلى فرص آمنة. برؤيةٍ استباقية، مهتم ببناء أنظمة حماية متطورة تصون البيانات والخصوصية في عالمٍ تتخطى فيه الحدود التقنية كل التوقعات.</p>
                 </div>
                 <div class="personal-details-grid">
-                   
-                    <div class="detail-box"><i class="fa fa-map-marker-alt"></i> <span> المملكة العربية السعودية ، الرياض  </span></div>
+                    <div class="detail-box"><i class="fa fa-map-marker-alt"></i> <span> المملكة العربية السعودية، الرياض</span></div>
                 </div>
             </section>
 
@@ -83,7 +84,7 @@
                 <hr class="separator">
                 <div class="about-text">
                     <p>يسعدني تواصلكم للاستشارات التقنية أو التعاون المهني.</p>
-                    <p>البريد الإلكتروني: sultanayedalotaibi@hotmail.com</p>
+                    <p>البريد الإلكتروني: <a href="mailto:sultanayedalotaibi@hotmail.com" style="color: #d4af37;">sultanayedalotaibi@hotmail.com</a></p>
                 </div>
             </section>
 
@@ -93,13 +94,16 @@
                     <h3>Eng: Sultan Bin Ayed</h3>
                     <p class="tagline">Cybersecurity Researcher & Specialist</p>
                 </div>
+                
                 <div class="social-links">
-                    <a href="https://x.com/SU2TAN" target="_blank"><i class="fab fa-x-twitter"></i></a>
-                    <a href="https://linkedin.com/in/sultan-ayed-6502aa156" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/Sultan-Ayed" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://x.com/SU2TAN" target="_blank" title="منصة X"><i class="fab fa-x-twitter"></i></a>
+                    <a href="https://snapchat.com/t/JUVDv1Kr" target="_blank" title="سناب شات"><i class="fab fa-snapchat"></i></a>
+                    <a href="https://linkedin.com/in/sultan-ayed-6502aa156" target="_blank" title="لينكد إن"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/Sultan-Ayed" target="_blank" title="جيت هوب"><i class="fab fa-github"></i></a>
                 </div>
+
                 <div class="card-footer">
-                    <button class="btn btn-primary" onclick="showSection('contact')">Contact Me</button>
+                    <button class="btn btn-primary" onclick="showSection('contact', event)">Contact Me</button>
                     <button class="btn btn-secondary">Download CV</button>
                 </div>
             </aside>
@@ -107,25 +111,26 @@
     </div>
 
     <script>
-        function showSection(sectionId) {
+        function showSection(sectionId, event) {
             // إخفاء جميع الأقسام
             const sections = document.querySelectorAll('.info-section');
             sections.forEach(s => s.classList.remove('active'));
 
-            // إزالة اللون الذهبي من جميع الأزرار
+            // إزالة اللون النشط من الأزرار
             const navItems = document.querySelectorAll('.nav-item');
             navItems.forEach(n => n.classList.remove('active'));
 
             // إظهار القسم المطلوب
-            document.getElementById(sectionId).classList.add('active');
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
 
-            // تفعيل الزر المناسب (عبر البحث عن النص أو الترتيب)
-            event.currentTarget.classList.add('active');
+            // تفعيل الزر الذي تم الضغط عليه
+            if (event && event.currentTarget) {
+                event.currentTarget.classList.add('active');
+            }
         }
     </script>
 </body>
 </html>
-
-
-
-
