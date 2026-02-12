@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sultan Bin Ayed - Profile</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="main-wrapper">
+        <nav class="sidebar">
+            <div class="nav-item active"><i class="fa fa-user"></i><span>نبذة عني</span></div>
+            <div class="nav-item"><i class="fa fa-graduation-cap"></i><span>المؤهلات</span></div>
+            <div class="nav-item"><i class="fa fa-briefcase"></i><span>الخبرات</span></div>
+            <div class="nav-item"><i class="fa fa-envelope"></i><span>التواصل</span></div>
+        </nav>
+
+        <div class="content-container">
+            <section class="info-section">
+                <h2>نبذة عني</h2>
+                <hr class="separator">
+                <p>أنا المهندس سلطان بن عايد، حاصل على درجة الماجستير في الأمن السيبراني...</p>
+                
+                <div class="personal-details">
+                    <div class="detail-box">
+                        <i class="fa fa-map-marker-alt"></i>
+                        <p>المنطقة: الرياض</p>
+                    </div>
+                    <div class="detail-box">
+                        <i class="fa fa-calendar"></i>
+                        <p>العمر: 35</p>
+                    </div>
+                </div>
+            </section>
+
+            <aside class="profile-card">
+                <div class="profile-header">
+                    <img src="https://up6.cc/2026/02/177089172019321.png" alt="Sultan" class="avatar">
+                    <h3>Eng: Sultan Bin Ayed</h3>
+                    <p class="tagline">Cybersecurity</p>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-primary">Contact Me</button>
+                    <button class="btn btn-secondary">Download CV</button>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+</body>
+</html>
