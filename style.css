@@ -1,4 +1,4 @@
-/* إعدادات الخط والألوان الأساسية */
+/* الألوان والخطوط */
 :root {
     --bg-color: #0c0c0c;
     --card-bg: #181818;
@@ -7,45 +7,32 @@
     --text-dim: #a0a0a0;
 }
 
-/* --- الماوس المخصص --- */
+/* إخفاء الماوس الأصلي وتجهيز الصفحة */
 html, body {
-    cursor: none !important; /* إخفاء الماوس الأصلي */
+    cursor: none !important;
     margin: 0;
     padding: 0;
-    direction: rtl;
-}
-
-.cursor-dot {
-    width: 6px;
-    height: 6px;
-    background-color: var(--accent-color);
-    position: fixed;
-    top: 0;
-    left: 0;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    z-index: 10000;
-    pointer-events: none;
-}
-
-.cursor-outline {
-    width: 35px;
-    height: 35px;
-    border: 1px solid var(--accent-color);
-    position: fixed;
-    top: 0;
-    left: 0;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    z-index: 9999;
-    pointer-events: none;
-}
-
-/* --- التنسيق العام --- */
-body {
     background-color: var(--bg-color);
     color: var(--text-main);
     font-family: 'Cairo', sans-serif;
+    direction: rtl;
+}
+
+/* --- تنسيق الماوس الذهبي --- */
+.cursor-dot {
+    width: 6px; height: 6px; background-color: var(--accent-color);
+    position: fixed; top: 0; left: 0; transform: translate(-50%, -50%);
+    border-radius: 50%; z-index: 10000; pointer-events: none;
+}
+.cursor-outline {
+    width: 35px; height: 35px; border: 1px solid var(--accent-color);
+    position: fixed; top: 0; left: 0; transform: translate(-50%, -50%);
+    border-radius: 50%; z-index: 9999; pointer-events: none;
+    transition: transform 0.15s ease-out;
+}
+
+/* --- الهيكل العام (منع اللخبطة) --- */
+body {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -57,7 +44,6 @@ body {
     width: 95%;
     max-width: 1200px;
     gap: 20px;
-    padding: 20px;
 }
 
 /* القائمة الجانبية */
@@ -73,12 +59,12 @@ body {
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
-.nav-item { color: #444; text-align: center; cursor: none; transition: 0.3s; }
-.nav-item i { font-size: 24px; display: block; margin-bottom: 5px; }
-.nav-item span { font-size: 10px; }
+.nav-item { color: #444; text-align: center; transition: 0.3s; }
 .nav-item.active { color: var(--accent-color); }
+.nav-item i { font-size: 24px; display: block; }
+.nav-item span { font-size: 10px; }
 
-/* حاوية المحتوى */
+/* حاوية المحتوى الوسطى */
 .content-container {
     display: flex;
     flex: 1;
@@ -90,14 +76,8 @@ body {
     background-color: var(--card-bg);
     border-radius: 20px;
     padding: 40px;
-    text-align: right;
-    display: none;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
-
-.info-section.active { display: block; animation: fadeIn 0.5s; }
-
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
 /* بطاقة التعريف الشخصية */
 .profile-card {
@@ -105,10 +85,9 @@ body {
     background-color: var(--card-bg);
     border-radius: 20px;
     overflow: hidden;
+    text-align: center;
     display: flex;
     flex-direction: column;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
 .profile-header {
@@ -118,28 +97,30 @@ body {
 }
 
 .avatar {
-    width: 130px;
-    height: 130px;
+    width: 140px; height: 140px;
     border-radius: 50%;
-    border: 3px solid var(--accent-color);
+    border: 4px solid var(--accent-color);
     object-fit: cover;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
-.social-links { margin: 20px 0; display: flex; justify-content: center; gap: 15px; }
-.social-links a { color: #fff; font-size: 20px; transition: 0.3s; }
+/* تنسيق الأزرار والروابط (لحل اللخبطة في الصورة الأخيرة) */
+.social-links { margin: 25px 0; display: flex; justify-content: center; gap: 20px; }
+.social-links a { color: #fff; font-size: 20px; text-decoration: none; transition: 0.3s; }
 .social-links a:hover { color: var(--accent-color); }
 
-.card-footer { margin-top: auto; display: flex; border-top: 1px solid #282828; }
-.btn { flex: 1; padding: 15px; border: none; background: none; color: #fff; font-family: 'Cairo'; font-weight: bold; transition: 0.3s; }
-.btn-primary { border-left: 1px solid #282828; }
+.card-footer { display: flex; border-top: 1px solid #282828; margin-top: auto; }
+.btn {
+    flex: 1; padding: 20px; border: none; background: none;
+    color: #fff; font-family: 'Cairo'; font-weight: bold;
+    transition: 0.3s; border-right: 1px solid #282828;
+}
 .btn:hover { background-color: var(--accent-color); color: #000; }
 
 /* التجاوب مع الجوال */
 @media (max-width: 900px) {
-    .main-wrapper, .content-container { flex-direction: column; height: auto; }
+    .main-wrapper, .content-container { flex-direction: column; }
     .sidebar { width: 100%; flex-direction: row; justify-content: space-around; height: auto; padding: 10px 0; }
-    .profile-card { order: -1; }
     html, body { cursor: auto !important; }
-    .cursor-dot, .cursor-outline { display: none !important; }
+    .cursor-dot, .cursor-outline { display: none; }
 }
