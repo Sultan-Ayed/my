@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sultan Ayed | Links</title>
+    <title>Sultan Ayed | الأمن السيبراني</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
@@ -14,42 +14,42 @@
     <div class="cursor-outline"></div>
 
     <div class="bio-container">
-        <img src="profile1.jpg" alt="Sultan Ayed" class="profile-img">
+        <div class="profile-wrapper">
+            <img src="profile1.jpg" alt="Sultan Ayed" class="profile-img">
+        </div>
         
         <h1>سلطان بن عايد <i class="fas fa-check-circle verified"></i></h1>
-        <p class="tagline">باحث ومختص في الأمن السيبراني</p>
+        <p class="tagline">Cybersecurity Researcher & Specialist</p>
 
-        <div class="social-icons-top">
-            <a href="https://snapchat.com/t/JUVDv1Kr" target="_blank"><i class="fab fa-snapchat"></i></a>
-            <a href="https://t.me/SULTAN_AYED" target="_blank"><i class="fab fa-telegram"></i></a>
-            <a href="https://x.com/SU2TAN" target="_blank"><i class="fab fa-x-twitter"></i></a>
-            <a href="https://linkedin.com/in/sultan-ayed-6502aa156" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <div class="social-icons">
+            <a href="https://x.com/SU2TAN" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://t.me/SULTAN_AYED" target="_blank"><i class="fa-brands fa-telegram"></i></a>
+            <a href="https://linkedin.com/in/sultan-ayed-6502aa156" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://snapchat.com/t/JUVDv1Kr" target="_blank"><i class="fa-brands fa-snapchat"></i></a>
         </div>
 
-        <div class="links-wrapper">
-            <a href="#" class="link-card">
-                <span class="link-text">نبذة عني</span>
-                <i class="fas fa-user"></i>
+        <div class="links-list">
+            <a href="#" class="link-item">
+                <i class="fas fa-shield-halved"></i>
+                <span>نبذة عني</span>
             </a>
-            <a href="#" class="link-card">
-                <span class="link-text">المؤهلات العلمية</span>
-                <i class="fas fa-graduation-cap"></i>
+            <a href="#" class="link-item">
+                <i class="fas fa-user-graduate"></i>
+                <span>المؤهلات العلمية</span>
             </a>
-            <a href="#" class="link-card">
-                <span class="link-text">الخبرات العملية</span>
-                <i class="fas fa-briefcase"></i>
+            <a href="#" class="link-item">
+                <i class="fas fa-laptop-code"></i>
+                <span>الخبرات العملية</span>
             </a>
-            <a href="#" class="link-card">
-                <span class="link-text">تحميل السيرة الذاتية</span>
-                <i class="fas fa-file-download"></i>
+            <a href="#" class="link-item">
+                <i class="fas fa-file-pdf"></i>
+                <span>السيرة الذاتية (CV)</span>
             </a>
-            <a href="mailto:sultanayedalotaibi@hotmail.com" class="link-card">
-                <span class="link-text">تواصل معي</span>
-                <i class="fas fa-envelope"></i>
+            <a href="mailto:sultanayedalotaibi@hotmail.com" class="link-item">
+                <i class="fas fa-envelope-open-text"></i>
+                <span>تواصل مباشر</span>
             </a>
         </div>
-
-        <div class="footer-logo">SULTAN AYED</div>
     </div>
 
     <script>
@@ -58,7 +58,7 @@
         window.addEventListener("mousemove", (e) => {
             dot.style.left = e.clientX + "px";
             dot.style.top = e.clientY + "px";
-            outline.animate({ left: e.clientX + "px", top: e.clientY + "px" }, { duration: 400, fill: "forwards" });
+            outline.animate({ left: e.clientX + "px", top: e.clientY + "px" }, { duration: 500, fill: "forwards" });
         });
     </script>
 </body>
