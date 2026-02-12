@@ -8,17 +8,29 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
-        /* ستايل لضمان التنقل وسلاسة الأيقونات */
+        /* تصحيح التنسيق ومنع التداخل */
+        body { margin: 0; padding: 0; overflow-x: hidden; }
         .info-section { display: none; }
         .info-section.active { display: block; animation: fadeIn 0.5s; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        
-        /* تحسين شكل الروابط والأيقونات */
-        .social-links { display: flex; justify-content: center; gap: 15px; padding: 10px; }
-        .social-links a { font-size: 22px; transition: 0.3s; color: #ffffff; text-decoration: none; }
+
+        /* تنسيق الأيقونات لضمان سطر واحد */
+        .social-links { 
+            display: flex; 
+            justify-content: center; 
+            gap: 15px; 
+            padding: 15px 10px;
+            flex-wrap: nowrap; /* إجبارها على سطر واحد */
+        }
+        .social-links a { 
+            font-size: 20px; 
+            color: #ffffff; 
+            transition: 0.3s; 
+            text-decoration: none; 
+        }
         .social-links a:hover { transform: translateY(-3px); color: #d4af37; }
-        
-        /* إعدادات الماوس المخصص للموبايل */
+
+        /* إخفاء الماوس المخصص على الجوال */
         @media (max-width: 900px) {
             .cursor-dot, .cursor-outline { display: none !important; }
             html, body { cursor: auto !important; }
@@ -45,11 +57,10 @@
                 <h2>نبذة عني</h2>
                 <hr class="separator">
                 <div class="about-text">
-                    <p>" أنا المهندس سلطان بن عايد، حاصل على درجة الماجستير في الأمن السيبراني، بمرتبة الشرف الأولى من جامعة University of Technology Sydney الأسترالية.</p>
-                    <p>أمتلك شغفًا بتطوير حلول أمنية ذكية تواكب التحديات الرقمية المتسارعة، وتحوِّل التهديدات إلى فرص آمنة.</p>
+                    <p>" أنا المهندس سلطان بن عايد، حاصل على درجة الماجستير في الأمن السيبراني بمرتبة الشرف الأولى. أمتلك شغفًا بتطوير حلول أمنية ذكية تواكب التحديات الرقمية المتسارعة."</p>
                 </div>
                 <div class="personal-details-grid">
-                    <div class="detail-box"><i class="fa fa-map-marker-alt"></i> <span> المملكة العربية السعودية، الرياض</span></div>
+                    <div class="detail-box"><i class="fa fa-map-marker-alt"></i> <span> الرياض، المملكة العربية السعودية</span></div>
                 </div>
             </section>
 
@@ -61,10 +72,10 @@
                 </div>
                 
                 <div class="social-links">
-                    <a href="https://github.com/Sultan-Ayed" target="_blank" title="جيت هوب"><i class="fa-brands fa-github"></i></a>
-                    <a href="https://linkedin.com/in/sultan-ayed-6502aa156" target="_blank" title="لينكد إن"><i class="fa-brands fa-linkedin"></i></a>
                     <a href="https://x.com/SU2TAN" target="_blank" title="منصة X"><i class="fa-brands fa-x-twitter"></i></a>
-                    <a href="https://t.me/SULTAN_AYED" target="_blank" title="قناة التليجرام"><i class="fa-brands fa-telegram"></i></a>
+                    <a href="https://t.me/SULTAN_AYED" target="_blank" title="تليجرام"><i class="fa-brands fa-telegram"></i></a>
+                    <a href="https://linkedin.com/in/sultan-ayed-6502aa156" target="_blank" title="لينكد إن"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://github.com/Sultan-Ayed" target="_blank" title="جيت هوب"><i class="fa-brands fa-github"></i></a>
                     <a href="https://snapchat.com/t/JUVDv1Kr" target="_blank" title="سناب شات"><i class="fa-brands fa-snapchat"></i></a>
                 </div>
 
@@ -77,29 +88,22 @@
     </div>
 
     <script>
+        // تبديل الأقسام
         function showSection(sectionId, event) {
-            const sections = document.querySelectorAll('.info-section');
-            sections.forEach(s => s.classList.remove('active'));
-            const navItems = document.querySelectorAll('.nav-item');
-            navItems.forEach(n => n.classList.remove('active'));
-            const targetSection = document.getElementById(sectionId);
-            if (targetSection) targetSection.classList.add('active');
-            if (event && event.currentTarget) event.currentTarget.classList.add('active');
+            document.querySelectorAll('.info-section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+            const target = document.getElementById(sectionId);
+            if (target) target.classList.add('active');
+            if (event) event.currentTarget.classList.add('active');
         }
 
-        // كود تشغيل الماوس المخصص
+        // حركة الماوس
         const dot = document.querySelector(".cursor-dot");
         const outline = document.querySelector(".cursor-outline");
-
         window.addEventListener("mousemove", (e) => {
-            const posX = e.clientX;
-            const posY = e.clientY;
-            dot.style.left = `${posX}px`;
-            dot.style.top = `${posY}px`;
-            outline.animate({
-                left: `${posX}px`,
-                top: `${posY}px`
-            }, { duration: 400, fill: "forwards" });
+            dot.style.left = e.clientX + "px";
+            dot.style.top = e.clientY + "px";
+            outline.animate({ left: e.clientX + "px", top: e.clientY + "px" }, { duration: 400, fill: "forwards" });
         });
     </script>
 </body>
