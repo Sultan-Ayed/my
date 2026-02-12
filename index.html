@@ -15,7 +15,7 @@
 
     <div class="bio-container">
         <div class="profile-wrapper">
-            <img src="profile1.jpg" alt="Sultan Ayed" class="profile-img">
+            <img src="./profile1.jpg" alt="Sultan Ayed" class="profile-img">
         </div>
         
         <h1>سلطان بن عايد <i class="fas fa-check-circle verified"></i></h1>
@@ -29,30 +29,50 @@
         </div>
 
         <div class="links-list">
-            <a href="#" class="link-item">
+            <button class="link-item" onclick="openPopup('about')">
                 <i class="fas fa-shield-halved"></i>
                 <span>نبذة عني</span>
-            </a>
-            <a href="#" class="link-item">
+            </button>
+            <button class="link-item" onclick="openPopup('edu')">
                 <i class="fas fa-user-graduate"></i>
                 <span>المؤهلات العلمية</span>
-            </a>
-            <a href="#" class="link-item">
+            </button>
+            <button class="link-item" onclick="openPopup('exp')">
                 <i class="fas fa-laptop-code"></i>
                 <span>الخبرات العملية</span>
-            </a>
-            <a href="#" class="link-item">
+            </button>
+            <a href="./Sultan_CV.pdf" class="link-item" target="_blank">
                 <i class="fas fa-file-pdf"></i>
                 <span>السيرة الذاتية (CV)</span>
-            </a>
-            <a href="mailto:sultanayedalotaibi@hotmail.com" class="link-item">
-                <i class="fas fa-envelope-open-text"></i>
-                <span>تواصل مباشر</span>
             </a>
         </div>
     </div>
 
+    <div id="popupOverlay" class="popup-overlay" onclick="closePopup()">
+        <div class="popup-content" onclick="event.stopPropagation()">
+            <span class="close-btn" onclick="closePopup()">&times;</span>
+            <div id="popupBody"></div>
+        </div>
+    </div>
+
     <script>
+        // كود تشغيل النوافذ المنبثقة
+        const content = {
+            about: "<h2>نبذة عني</h2><p>المهندس سلطان بن عايد، باحث مختص في الأمن السيبراني، حاصل على الماجستير بمرتبة الشرف الأولى...</p>",
+            edu: "<h2>المؤهلات العلمية</h2><p>ماجستير الأمن السيبراني - جامعة UTS أستراليا</p>",
+            exp: "<h2>الخبرات العملية</h2><p>باحث ومختص في أمن المعلومات والأنظمة الذكية...</p>"
+        };
+
+        function openPopup(id) {
+            document.getElementById('popupBody').innerHTML = content[id];
+            document.getElementById('popupOverlay').classList.add('active');
+        }
+
+        function closePopup() {
+            document.getElementById('popupOverlay').classList.remove('active');
+        }
+
+        // كود الماوس
         const dot = document.querySelector(".cursor-dot");
         const outline = document.querySelector(".cursor-outline");
         window.addEventListener("mousemove", (e) => {
