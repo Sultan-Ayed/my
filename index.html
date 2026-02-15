@@ -27,7 +27,7 @@
         <h1>سلطان بن عايد <i class="fas fa-check-circle verified"></i></h1>
         
         <p class="tagline">
-            <span id="typewriter"></span><span class="cursor">|</span>
+            <span id="typewriter"></span>
         </p>
 
         <div class="social-icons">
@@ -67,19 +67,38 @@
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
     <script>
-        // --- 1. تأثير الكتابة (Typewriter Effect) ---
+        // --- 1. تأثير الكتابة المتكررة (Loop Typewriter) بدون خط واقف ---
         const text = " باحث ومتخصص في الأمن السيبراني ";
-        let i = 0;
+        const typewriterElement = document.getElementById("typewriter");
+        let charIndex = 0;
+        let isDeleting = false;
+        let typeSpeed = 150;
+
         function typeWriter() {
-            if (i < text.length) {
-                document.getElementById("typewriter").innerHTML += text.charAt(i);
-                i++;
-                setTimeout(typeWriter, 100);
+            if (isDeleting) {
+                typewriterElement.textContent = text.substring(0, charIndex - 1);
+                charIndex--;
+                typeSpeed = 100; // سرعة المسح
+            } else {
+                typewriterElement.textContent = text.substring(0, charIndex + 1);
+                charIndex++;
+                typeSpeed = 200; // سرعة الكتابة
             }
+
+            if (!isDeleting && charIndex === text.length) {
+                isDeleting = true;
+                typeSpeed = 2000; // مدة بقاء النص مكتمل
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                typeSpeed = 500;
+            }
+
+            setTimeout(typeWriter, typeSpeed);
         }
+
         window.onload = typeWriter;
 
-        // --- 2. كود التشغيل التلقائي للصوت المطور ---
+        // --- 2. كود التشغيل التلقائي للصوت ---
         const audio = document.getElementById('bgMusic');
         const startAudio = () => {
             audio.play().then(() => {
@@ -90,7 +109,7 @@
         ['click', 'touchstart', 'mousemove', 'scroll'].forEach(evt => 
             document.addEventListener(evt, startAudio));
 
-        // --- 3. كود جزيئات الخلفية الذهبية ---
+        // --- 3. كود جزيئات الخلفية ---
         particlesJS('particles-js', {
             "particles": {
                 "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
@@ -123,7 +142,7 @@
             document.getElementById('popupOverlay').style.display = 'none';
         }
 
-        // --- 5. كود مؤشر الماوس الذهبي ---
+        // --- 5. كود مؤشر الماوس ---
         const dot = document.querySelector(".cursor-dot");
         const outline = document.querySelector(".cursor-outline");
         window.addEventListener("mousemove", (e) => {
@@ -134,5 +153,3 @@
     </script>
 </body>
 </html>
-
-
