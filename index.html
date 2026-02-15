@@ -10,6 +10,8 @@
 </head>
 <body>
 
+    <div id="particles-js" style="position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: 0;"></div>
+
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
 
@@ -28,24 +30,24 @@
             <a href="https://snapchat.com/t/JUVDv1Kr" target="_blank"><i class="fa-brands fa-snapchat"></i></a>
         </div>
 
-     <div class="links-list">
-    <button class="link-item" onclick="openPopup('about')">
-        <i class="fas fa-shield-halved"></i>
-        <span>نبذة عني</span>
-    </button>
-    <button class="link-item" onclick="openPopup('edu')">
-        <i class="fas fa-user-graduate"></i>
-        <span>المؤهلات العلمية</span>
-    </button>
-    <button class="link-item" onclick="openPopup('exp')">
-        <i class="fas fa-laptop-code"></i>
-        <span>الخبرات العملية</span>
-    </button>
-    <a href="mailto:sultanayedalotaibi@hotmail.com" class="link-item">
-        <i class="fas fa-envelope-open-text"></i>
-        <span>تواصل مباشر</span>
-    </a>
-</div>
+        <div class="links-list">
+            <button class="link-item" onclick="openPopup('about')">
+                <i class="fas fa-shield-halved"></i>
+                <span>نبذة عني</span>
+            </button>
+            <button class="link-item" onclick="openPopup('edu')">
+                <i class="fas fa-user-graduate"></i>
+                <span>المؤهلات العلمية</span>
+            </button>
+            <button class="link-item" onclick="openPopup('exp')">
+                <i class="fas fa-laptop-code"></i>
+                <span>الخبرات العملية</span>
+            </button>
+            <a href="mailto:sultanayedalotaibi@hotmail.com" class="link-item">
+                <i class="fas fa-envelope-open-text"></i>
+                <span>تواصل مباشر</span>
+            </a>
+        </div>
     </div>
 
     <div id="popupOverlay" class="popup-overlay" onclick="closePopup()">
@@ -55,39 +57,36 @@
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
     <script>
-        // النصوص الكاملة للأزرار
+        // 1. كود تشغيل الجزيئات (Particles)
+        particlesJS('particles-js', {
+            "particles": {
+                "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#d4af37" }, 
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.5, "random": false },
+                "size": { "value": 3, "random": true },
+                "line_linked": { "enable": true, "distance": 150, "color": "#d4af37", "opacity": 0.4, "width": 1 },
+                "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" } }
+            },
+            "retina_detect": true
+        });
+
+        // 2. كود النوافذ المنبثقة (Popups)
         const content = {
-            about: `
-                <i class="fas fa-shield-halved" style="font-size: 40px; color: #d4af37; margin-bottom: 15px;"></i>
-                <h2 style="color:#d4af37">نبذة عني</h2>
-                <p style="line-height: 1.8; text-align: justify; font-size: 15px;">
-                    باحث في الأمن السيبراني، ومختص في التدريب والتعليم.، مهتم بنشر الوعي السيبراني في المجتمع ، ومتابعة أخر البحوث العلمية المتخصصة في الجانب السيبراني والذكاء الاصطناعي .
-                </p>
-            `,
-            edu: `
-                <i class="fas fa-user-graduate" style="font-size: 40px; color: #d4af37; margin-bottom: 15px;"></i>
-                <h2 style="color:#d4af37">المؤهلات العلمية</h2>
-                <p style="line-height: 2;">
-                    <strong>ماجستير الأمن السيبراني</strong><br>
-                    بمرتبة الشرف الأولى<br>
-                    جامعة سيدني للتكنولوجيا (UTS) - أستراليا
-                </p>
-            `,
-            exp: `
-                <i class="fas fa-laptop-code" style="font-size: 40px; color: #d4af37; margin-bottom: 15px;"></i>
-                <h2 style="color:#d4af37">الخبرات العملية</h2>
-                <p style="line-height: 1.8; font-size: 15px;">
-                    محاضر في المؤسسة العامة للتدريب التقني والمهني
-                   موظف حكومي سابق في " بنك التنمية الاجتماعية 
-                   موظف قطاع خاص " شركة المسار للاتصالات وتقنية المعلومات المحدودة ( ساهر ) " 
-                </p>
-            `
+            about: `<i class="fas fa-shield-halved" style="font-size: 40px; color: #d4af37; margin-bottom: 15px;"></i><h2 style="color:#d4af37">نبذة عني</h2><p style="line-height: 1.8; text-align: justify; font-size: 15px;">باحث في الأمن السيبراني، ومختص في التدريب والتعليم. مهتم بنشر الوعي السيبراني في المجتمع، ومتابعة آخر البحوث العلمية المتخصصة في الجانب السيبراني والذكاء الاصطناعي.</p>`,
+            edu: `<i class="fas fa-user-graduate" style="font-size: 40px; color: #d4af37; margin-bottom: 15px;"></i><h2 style="color:#d4af37">المؤهلات العلمية</h2><p style="line-height: 2;"><strong>ماجستير الأمن السيبراني</strong><br>بمرتبة الشرف الأولى<br>جامعة سيدني للتكنولوجيا (UTS) - أستراليا</p>`,
+            exp: `<i class="fas fa-laptop-code" style="font-size: 40px; color: #d4af37; margin-bottom: 15px;"></i><h2 style="color:#d4af37">الخبرات العملية</h2><p style="line-height: 1.8; font-size: 15px;">محاضر في المؤسسة العامة للتدريب التقني والمهني<br>موظف حكومي سابق في بنك التنمية الاجتماعية<br>موظف قطاع خاص (شركة المسار - ساهر)</p>`
         };
 
         function openPopup(id) {
-            const popupBody = document.getElementById('popupBody');
-            popupBody.innerHTML = content[id];
+            document.getElementById('popupBody').innerHTML = content[id];
             document.getElementById('popupOverlay').style.display = 'flex';
         }
 
@@ -95,7 +94,7 @@
             document.getElementById('popupOverlay').style.display = 'none';
         }
 
-        // كود الماوس الذهبي
+        // 3. كود الماوس الذهبي (تم توحيده في نسخة واحدة)
         const dot = document.querySelector(".cursor-dot");
         const outline = document.querySelector(".cursor-outline");
         window.addEventListener("mousemove", (e) => {
@@ -104,54 +103,5 @@
             outline.animate({ left: e.clientX + "px", top: e.clientY + "px" }, { duration: 500, fill: "forwards" });
         });
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-
-    <script>
-      particlesJS('particles-js', {
-        "particles": {
-          "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
-          "color": { "value": "#d4af37" }, 
-          "shape": { "type": "circle" },
-          "opacity": { "value": 0.5, "random": false },
-          "size": { "value": 3, "random": true },
-          "line_linked": { 
-            "enable": true, 
-            "distance": 150, 
-            "color": "#d4af37", 
-            "opacity": 0.4, 
-            "width": 1 
-          },
-          "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
-        },
-        "interactivity": {
-          "detect_on": "canvas",
-          "events": {
-            "onhover": { "enable": true, "mode": "grab" },
-            "onclick": { "enable": true, "mode": "push" }
-          }
-        },
-        "retina_detect": true
-      });
-    </script>
-
-    <script>
-        const dot = document.querySelector(".cursor-dot");
-        const outline = document.querySelector(".cursor-outline");
-        window.addEventListener("mousemove", (e) => {
-            dot.style.left = e.clientX + "px";
-            dot.style.top = e.clientY + "px";
-            outline.animate({ 
-                left: e.clientX + "px", 
-                top: e.clientY + "px" 
-            }, { duration: 500, fill: "forwards" });
-        });
-    </script>
 </body>
 </html>
-
-
-
-
-
-
-
