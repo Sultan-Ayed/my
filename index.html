@@ -10,7 +10,7 @@
 </head>
 <body>
 
-    <audio id="bgMusic" loop preload="auto">
+    <audio id="bgMusic"  preload="auto">
         <source src="sound.mp3" type="audio/mpeg">
     </audio>
 
@@ -67,84 +67,70 @@
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
     <script>
-        // --- 1. التايب رايتر ---
+        // --- 1. تأثير الكتابة المتكررة (Loop Typewriter) بدون خط واقف ---
         const text = " باحث ومتخصص في الأمن السيبراني ";
         const typewriterElement = document.getElementById("typewriter");
-        let charIndex = 0; let isDeleting = false; let typeSpeed = 150;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typeSpeed = 150;
 
         function typeWriter() {
             if (isDeleting) {
                 typewriterElement.textContent = text.substring(0, charIndex - 1);
-                charIndex--; typeSpeed = 100;
+                charIndex--;
+                typeSpeed = 100; // سرعة المسح
             } else {
                 typewriterElement.textContent = text.substring(0, charIndex + 1);
-                charIndex++; typeSpeed = 200;
+                charIndex++;
+                typeSpeed = 200; // سرعة الكتابة
             }
+
             if (!isDeleting && charIndex === text.length) {
-                isDeleting = true; typeSpeed = 2000;
+                isDeleting = true;
+                typeSpeed = 2000; // مدة بقاء النص مكتمل
             } else if (isDeleting && charIndex === 0) {
-                isDeleting = false; typeSpeed = 500;
+                isDeleting = false;
+                typeSpeed = 500;
             }
+
             setTimeout(typeWriter, typeSpeed);
         }
+
         window.onload = typeWriter;
 
-        // --- 2. الصوت ---
+        // --- 2. كود التشغيل التلقائي للصوت ---
         const audio = document.getElementById('bgMusic');
         const startAudio = () => {
             audio.play().then(() => {
                 ['click', 'touchstart', 'mousemove', 'scroll'].forEach(evt => 
                     document.removeEventListener(evt, startAudio));
-            }).catch(e => console.log("Audio waiting..."));
+            }).catch(error => console.log("بانتظار التفاعل..."));
         };
         ['click', 'touchstart', 'mousemove', 'scroll'].forEach(evt => 
             document.addEventListener(evt, startAudio));
 
-        // --- 3. الجزيئات ---
+        // --- 3. كود جزيئات الخلفية ---
         particlesJS('particles-js', {
             "particles": {
-                "number": { "value": 80 },
-                "color": { "value": "#d4af37" },
-                "line_linked": { "enable": true, "color": "#d4af37" },
-                "move": { "enable": true, "speed": 2 }
-            }
+                "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#d4af37" }, 
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.5 },
+                "size": { "value": 3, "random": true },
+                "line_linked": { "enable": true, "distance": 150, "color": "#d4af37", "opacity": 0.4, "width": 1 },
+                "move": { "enable": true, "speed": 2, "out_mode": "out" }
+            },
+            "interactivity": {
+                "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" } }
+            },
+            "retina_detect": true
         });
 
-        // --- 4. الخريطة الذهنية الأفقية ---
+        // --- 4. محتوى النوافذ المنبثقة ---
         const content = {
-            about: `
-                <div class="mindmap-container">
-                    <div class="node central">سلطان عايد</div>
-                    <div class="connector-h"></div>
-                    <div class="nodes-grid">
-                        <div class="node branch">باحث أمني</div>
-                        <div class="node branch">مختص تدريب</div>
-                        <div class="node branch">وعي سيبراني</div>
-                        <div class="node branch">AI Security</div>
-                    </div>
-                </div>`,
-            edu: `
-                <div class="mindmap-container">
-                    <div class="node central">المؤهلات</div>
-                    <div class="connector-h"></div>
-                    <div class="nodes-grid">
-                        <div class="node branch">ماجستير UTS</div>
-                        <div class="node branch">أمن سيبراني</div>
-                        <div class="node branch">شرف أولى</div>
-                        <div class="node branch">أستراليا</div>
-                    </div>
-                </div>`,
-            exp: `
-                <div class="mindmap-container">
-                    <div class="node central">الخبرات</div>
-                    <div class="connector-h"></div>
-                    <div class="nodes-grid">
-                        <div class="node branch">محاضر TVTC</div>
-                        <div class="node branch">بنك التنمية</div>
-                        <div class="node branch">شركة المسار</div>
-                        <div class="node branch">القطاع الخاص</div>
-                    </div>
-                </div>`
+            about: `<i class="fas fa-shield-halved" style="font-size: 40px; color: #d4af37; margin-bottom: 15px;"></i><h2 style="color:#d4af37">نبذة عني</h2><p style="line-height: 1.8; text-align: justify; font-size: 15px;">باحث في الأمن السيبراني، ومختص في التدريب والتعليم. مهتم بنشر الوعي السيبراني في المجتمع، ومتابعة آخر البحوث العلمية المتخصصة في الجانب السيبراني والذكاء الاصطناعي.</p>`,
+            edu: `<i class="fas fa-user-graduate" style="font-size: 40px; color: #d4af37; margin-bottom: 15px;"></i><h2 style="color:#d4af37">المؤهلات العلمية</h2><p style="line-height: 2;"><strong>ماجستير الأمن السيبراني</strong><br>بمرتبة الشرف الأولى<br>جامعة سيدني للتكنولوجيا (UTS) - أستراليا</p>`,
+            exp: `<i class="fas fa-laptop-code" style="font-size: 40px; color: #d4af37; margin-bottom: 15px;"></i><h2 style="color:#d4af37">الخبرات العملية</h2><p style="line-height: 1.8; font-size: 15px;">محاضر في المؤسسة العامة للتدريب التقني والمهني<br>موظف حكومي سابق في بنك التنمية الاجتماعية<br>موظف قطاع خاص (شركة المسار - ساهر)</p>`
         };
 
         function openPopup(id) {
@@ -156,13 +142,15 @@
             document.getElementById('popupOverlay').style.display = 'none';
         }
 
-        // --- 5. الماوس ---
+        // --- 5. كود مؤشر الماوس ---
         const dot = document.querySelector(".cursor-dot");
         const outline = document.querySelector(".cursor-outline");
         window.addEventListener("mousemove", (e) => {
-            dot.style.left = e.clientX + "px"; dot.style.top = e.clientY + "px";
+            dot.style.left = e.clientX + "px";
+            dot.style.top = e.clientY + "px";
             outline.animate({ left: e.clientX + "px", top: e.clientY + "px" }, { duration: 500, fill: "forwards" });
         });
     </script>
 </body>
 </html>
+
