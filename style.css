@@ -1,16 +1,13 @@
 :root {
     --gold: #d4af37;
-    --dark-bg: #050505;
-    /* جعلنا خلفية الكروت شفافة جداً لكي تظهر الحركة خلفها */
-    --card-bg: rgba(255, 255, 255, 0.01); 
-    --glass-border: rgba(212, 175, 55, 0.2);
+    --glass-border: rgba(212, 175, 55, 0.3);
 }
 
 body {
     margin: 0;
     padding: 0;
-    /* تدرج لوني متحرك فخم */
-    background: linear-gradient(-45deg, #000000, #1a1a1a, #0a0a0a, #141108);
+    /* خلفية متدرجة متحركة هادئة */
+    background: linear-gradient(-45deg, #050505, #1a1a1a, #0a0a0a, #000000);
     background-size: 400% 400%;
     animation: gradientAnimation 15s ease infinite;
     font-family: 'Cairo', sans-serif;
@@ -37,7 +34,7 @@ body {
     z-index: 10;
 }
 
-/* صورة البروفيل وتأثير النبض */
+/* صورة البروفيل مع النبض الذهبي */
 .profile-wrapper {
     position: relative;
     width: 130px;
@@ -70,11 +67,11 @@ body {
     100% { transform: scale(1); opacity: 0; }
 }
 
-h1 { font-size: 24px; font-weight: 700; margin: 10px 0; letter-spacing: 1px; }
+h1 { font-size: 24px; font-weight: 700; margin: 10px 0; }
 .verified { color: #1da1f2; font-size: 18px; margin-right: 5px; }
 .tagline { color: var(--gold); font-size: 13px; letter-spacing: 2px; margin-bottom: 30px; opacity: 0.9; }
 
-/* أيقونات التواصل */
+/* أيقونات التواصل الاجتماعي */
 .social-icons {
     display: flex;
     justify-content: center;
@@ -85,7 +82,7 @@ h1 { font-size: 24px; font-weight: 700; margin: 10px 0; letter-spacing: 1px; }
 .social-icons a {
     width: 45px;
     height: 45px;
-    background: var(--card-bg);
+    background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--glass-border);
     border-radius: 12px;
     display: flex;
@@ -102,10 +99,9 @@ h1 { font-size: 24px; font-weight: 700; margin: 10px 0; letter-spacing: 1px; }
     background: var(--gold);
     color: black;
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
 }
 
-/* الأزرار المتحركة الشفافة */
+/* الأزرار الشفافة المتفاعلة مع الخلفية */
 .links-list {
     display: flex;
     flex-direction: column;
@@ -113,8 +109,8 @@ h1 { font-size: 24px; font-weight: 700; margin: 10px 0; letter-spacing: 1px; }
 }
 
 .link-item {
-    /* إلغاء الخلفية الثابتة وجعلها شفافة تعكس ما خلفها */
-    background: rgba(255, 255, 255, 0.03); 
+    /* جعلنا الخلفية شفافة جداً لترى الجزيئات من خلفها */
+    background: rgba(255, 255, 255, 0.02); 
     border: 1px solid var(--glass-border);
     padding: 18px 25px;
     border-radius: 15px;
@@ -122,21 +118,18 @@ h1 { font-size: 24px; font-weight: 700; margin: 10px 0; letter-spacing: 1px; }
     display: flex;
     align-items: center;
     transition: all 0.4s ease;
-    /* تأثير الزجاج ليعكس حركة الخلفية بغبش أنيق */
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    /* تأثير غبش الزجاج */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     cursor: pointer;
     width: 100%;
     font-family: 'Cairo', sans-serif;
-    text-decoration: none;
 }
 
 .link-item:hover {
-    /* تأثير عند المرور يزيد الوضوح والحركة */
     background: rgba(212, 175, 55, 0.1);
     border-color: var(--gold);
-    transform: scale(1.03) translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transform: scale(1.02);
 }
 
 .link-item i {
@@ -167,6 +160,6 @@ h1 { font-size: 24px; font-weight: 700; margin: 10px 0; letter-spacing: 1px; }
 .popup-content {
     background: #111; border: 1px solid var(--gold);
     padding: 30px; border-radius: 20px; max-width: 90%; width: 400px;
-    position: relative; text-align: center; color: white;
+    position: relative; text-align: center;
 }
 .close-btn { position: absolute; top: 10px; right: 15px; font-size: 25px; cursor: pointer; color: var(--gold); }
