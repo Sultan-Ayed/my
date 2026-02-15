@@ -1,14 +1,15 @@
 :root {
     --gold: #d4af37;
     --dark-bg: #050505;
-    --card-bg: rgba(255, 255, 255, 0.03);
+    /* جعلنا خلفية الكروت شفافة جداً لكي تظهر الحركة خلفها */
+    --card-bg: rgba(255, 255, 255, 0.01); 
     --glass-border: rgba(212, 175, 55, 0.2);
 }
 
 body {
     margin: 0;
     padding: 0;
-    /* خلفية فخمة بتدرج لوني متحرك */
+    /* تدرج لوني متحرك فخم */
     background: linear-gradient(-45deg, #000000, #1a1a1a, #0a0a0a, #141108);
     background-size: 400% 400%;
     animation: gradientAnimation 15s ease infinite;
@@ -33,7 +34,7 @@ body {
     max-width: 420px;
     padding: 50px 20px;
     text-align: center;
-    z-index: 10; /* لضمان ظهور المحتوى فوق الجزيئات */
+    z-index: 10;
 }
 
 /* صورة البروفيل وتأثير النبض */
@@ -94,6 +95,7 @@ h1 { font-size: 24px; font-weight: 700; margin: 10px 0; letter-spacing: 1px; }
     font-size: 20px;
     text-decoration: none;
     transition: 0.4s;
+    backdrop-filter: blur(5px);
 }
 
 .social-icons a:hover {
@@ -103,7 +105,7 @@ h1 { font-size: 24px; font-weight: 700; margin: 10px 0; letter-spacing: 1px; }
     box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
 }
 
-/* الأزرار */
+/* الأزرار المتحركة الشفافة */
 .links-list {
     display: flex;
     flex-direction: column;
@@ -111,24 +113,30 @@ h1 { font-size: 24px; font-weight: 700; margin: 10px 0; letter-spacing: 1px; }
 }
 
 .link-item {
-    background: var(--card-bg);
+    /* إلغاء الخلفية الثابتة وجعلها شفافة تعكس ما خلفها */
+    background: rgba(255, 255, 255, 0.03); 
     border: 1px solid var(--glass-border);
     padding: 18px 25px;
     border-radius: 15px;
     color: white;
     display: flex;
     align-items: center;
-    transition: 0.3s;
-    backdrop-filter: blur(10px);
+    transition: all 0.4s ease;
+    /* تأثير الزجاج ليعكس حركة الخلفية بغبش أنيق */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     cursor: pointer;
     width: 100%;
     font-family: 'Cairo', sans-serif;
+    text-decoration: none;
 }
 
 .link-item:hover {
+    /* تأثير عند المرور يزيد الوضوح والحركة */
     background: rgba(212, 175, 55, 0.1);
     border-color: var(--gold);
-    transform: scale(1.02);
+    transform: scale(1.03) translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .link-item i {
