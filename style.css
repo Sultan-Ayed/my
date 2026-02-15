@@ -8,10 +8,12 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: var(--dark-bg);
-    background-image: 
-        radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.05) 0%, transparent 40%),
-        radial-gradient(circle at 80% 70%, rgba(212, 175, 55, 0.05) 0%, transparent 40%);
+    /* خلفية تجمع بين اللون الداكن وصورة تقنية باهتة */
+    background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.95)), 
+                url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2000');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
     font-family: 'Cairo', sans-serif;
     color: white;
     display: flex;
@@ -155,4 +157,5 @@ h1 { font-size: 24px; font-weight: 700; margin: 10px 0; letter-spacing: 1px; }
 }
 .close-btn { position: absolute; top: 10px; right: 15px; font-size: 25px; cursor: pointer; color: var(--gold); }
 button.link-item { width: 100%; cursor: none; border: 1px solid var(--glass-border); }
+
 
