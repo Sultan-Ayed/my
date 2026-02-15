@@ -67,77 +67,66 @@
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
     <script>
-        // --- 1. تأثير الكتابة المتكررة ---
+        // --- 1. التايب رايتر ---
         const text = " باحث ومتخصص في الأمن السيبراني ";
         const typewriterElement = document.getElementById("typewriter");
-        let charIndex = 0;
-        let isDeleting = false;
-        let typeSpeed = 150;
+        let charIndex = 0; let isDeleting = false; let typeSpeed = 150;
 
         function typeWriter() {
             if (isDeleting) {
                 typewriterElement.textContent = text.substring(0, charIndex - 1);
-                charIndex--;
-                typeSpeed = 100;
+                charIndex--; typeSpeed = 100;
             } else {
                 typewriterElement.textContent = text.substring(0, charIndex + 1);
-                charIndex++;
-                typeSpeed = 200;
+                charIndex++; typeSpeed = 200;
             }
-
             if (!isDeleting && charIndex === text.length) {
-                isDeleting = true;
-                typeSpeed = 2000;
+                isDeleting = true; typeSpeed = 2000;
             } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                typeSpeed = 500;
+                isDeleting = false; typeSpeed = 500;
             }
             setTimeout(typeWriter, typeSpeed);
         }
         window.onload = typeWriter;
 
-        // --- 2. كود الصوت ---
+        // --- 2. الصوت ---
         const audio = document.getElementById('bgMusic');
         const startAudio = () => {
             audio.play().then(() => {
                 ['click', 'touchstart', 'mousemove', 'scroll'].forEach(evt => 
                     document.removeEventListener(evt, startAudio));
-            }).catch(error => console.log("Waiting for interaction..."));
+            }).catch(e => console.log("Audio waiting..."));
         };
         ['click', 'touchstart', 'mousemove', 'scroll'].forEach(evt => 
             document.addEventListener(evt, startAudio));
 
-        // --- 3. جزيئات الخلفية ---
+        // --- 3. الجزيئات ---
         particlesJS('particles-js', {
             "particles": {
-                "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
-                "color": { "value": "#d4af37" }, 
-                "shape": { "type": "circle" },
-                "opacity": { "value": 0.5 },
-                "size": { "value": 3, "random": true },
-                "line_linked": { "enable": true, "distance": 150, "color": "#d4af37", "opacity": 0.4, "width": 1 },
-                "move": { "enable": true, "speed": 2, "out_mode": "out" }
-            },
-            "retina_detect": true
+                "number": { "value": 80 },
+                "color": { "value": "#d4af37" },
+                "line_linked": { "enable": true, "color": "#d4af37" },
+                "move": { "enable": true, "speed": 2 }
+            }
         });
 
-        // --- 4. محتوى الخريطة الذهنية المتطور ---
+        // --- 4. الخريطة الذهنية الأفقية ---
         const content = {
             about: `
                 <div class="mindmap-container">
                     <div class="node central">سلطان عايد</div>
-                    <div class="connector-v"></div>
+                    <div class="connector-h"></div>
                     <div class="nodes-grid">
                         <div class="node branch">باحث أمني</div>
                         <div class="node branch">مختص تدريب</div>
                         <div class="node branch">وعي سيبراني</div>
-                        <div class="node branch">AI & Security</div>
+                        <div class="node branch">AI Security</div>
                     </div>
                 </div>`,
             edu: `
                 <div class="mindmap-container">
                     <div class="node central">المؤهلات</div>
-                    <div class="connector-v"></div>
+                    <div class="connector-h"></div>
                     <div class="nodes-grid">
                         <div class="node branch">ماجستير UTS</div>
                         <div class="node branch">أمن سيبراني</div>
@@ -148,12 +137,12 @@
             exp: `
                 <div class="mindmap-container">
                     <div class="node central">الخبرات</div>
-                    <div class="connector-v"></div>
+                    <div class="connector-h"></div>
                     <div class="nodes-grid">
                         <div class="node branch">محاضر TVTC</div>
                         <div class="node branch">بنك التنمية</div>
-                        <div class="node branch">المسار (ساهر)</div>
-                        <div class="node branch">قطاع خاص</div>
+                        <div class="node branch">شركة المسار</div>
+                        <div class="node branch">القطاع الخاص</div>
                     </div>
                 </div>`
         };
@@ -167,12 +156,11 @@
             document.getElementById('popupOverlay').style.display = 'none';
         }
 
-        // --- 5. مؤشر الماوس ---
+        // --- 5. الماوس ---
         const dot = document.querySelector(".cursor-dot");
         const outline = document.querySelector(".cursor-outline");
         window.addEventListener("mousemove", (e) => {
-            dot.style.left = e.clientX + "px";
-            dot.style.top = e.clientY + "px";
+            dot.style.left = e.clientX + "px"; dot.style.top = e.clientY + "px";
             outline.animate({ left: e.clientX + "px", top: e.clientY + "px" }, { duration: 500, fill: "forwards" });
         });
     </script>
