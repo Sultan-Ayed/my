@@ -9,9 +9,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<audio id="bgMusic" loop preload="auto">
-    <source src="sound.mp3" type="audio/mpeg">
-</audio>
+
+    <audio id="bgMusic" loop preload="auto">
+        <source src="sound.mp3" type="audio/mpeg">
+    </audio>
+
     <div id="particles-js" style="position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: 0;"></div>
 
     <div class="cursor-dot"></div>
@@ -62,27 +64,29 @@
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
     <script>
+        // --- 1. كود التشغيل التلقائي للصوت المطور ---
+        const audio = document.getElementById('bgMusic');
+        
+        // محاولة التشغيل عند أي تفاعل
+        const startAudio = () => {
+            audio.play().then(() => {
+                // إذا نجح التشغيل، نحذف المستمعات لعدم تكرار الكود
+                document.removeEventListener('click', startAudio);
+                document.removeEventListener('touchstart', startAudio);
+                document.removeEventListener('mousemove', startAudio);
+                document.removeEventListener('scroll', startAudio);
+            }).catch(error => {
+                console.log("بانتظار تفاعل حقيقي من المستخدم...");
+            });
+        };
 
-        // مصفوفة من الأحداث التي تعتبر "تفاعلاً" من المستخدم
-const events = ['click', 'mousedown', 'touchstart', 'scroll', 'keydown'];
+        // استماع لجميع أنواع التفاعلات (أول حركة ستشغل الصوت)
+        document.addEventListener('click', startAudio);
+        document.addEventListener('touchstart', startAudio);
+        document.addEventListener('mousemove', startAudio);
+        document.addEventListener('scroll', startAudio);
 
-function playAudio() {
-    const audio = document.getElementById('bgMusic');
-    audio.play().then(() => {
-        // بمجرد أن ينجح التشغيل، نقوم بحذف المراقبين لتوفير موارد الجهاز
-        events.forEach(event => {
-            window.removeEventListener(event, playAudio);
-        });
-    }).catch(error => {
-        console.log("المتصفح مازال ينتظر تفاعل المستخدم...");
-    });
-}
-
-// إضافة مراقب لكل أنواع التفاعل الممكنة
-events.forEach(event => {
-    window.addEventListener(event, playAudio);
-});
-        // 1. كود تشغيل الجزيئات (Particles)
+        // --- 2. كود جزيئات الخلفية (Particles) ---
         particlesJS('particles-js', {
             "particles": {
                 "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
@@ -100,7 +104,7 @@ events.forEach(event => {
             "retina_detect": true
         });
 
-        // 2. كود النوافذ المنبثقة (Popups)
+        // --- 3. كود النوافذ المنبثقة (Popups) ---
         const content = {
             about: `<i class="fas fa-shield-halved" style="font-size: 40px; color: #d4af37; margin-bottom: 15px;"></i><h2 style="color:#d4af37">نبذة عني</h2><p style="line-height: 1.8; text-align: justify; font-size: 15px;">باحث في الأمن السيبراني، ومختص في التدريب والتعليم. مهتم بنشر الوعي السيبراني في المجتمع، ومتابعة آخر البحوث العلمية المتخصصة في الجانب السيبراني والذكاء الاصطناعي.</p>`,
             edu: `<i class="fas fa-user-graduate" style="font-size: 40px; color: #d4af37; margin-bottom: 15px;"></i><h2 style="color:#d4af37">المؤهلات العلمية</h2><p style="line-height: 2;"><strong>ماجستير الأمن السيبراني</strong><br>بمرتبة الشرف الأولى<br>جامعة سيدني للتكنولوجيا (UTS) - أستراليا</p>`,
@@ -116,7 +120,7 @@ events.forEach(event => {
             document.getElementById('popupOverlay').style.display = 'none';
         }
 
-        // 3. كود الماوس الذهبي (تم توحيده في نسخة واحدة)
+        // --- 4. كود مؤشر الماوس ---
         const dot = document.querySelector(".cursor-dot");
         const outline = document.querySelector(".cursor-outline");
         window.addEventListener("mousemove", (e) => {
@@ -127,5 +131,3 @@ events.forEach(event => {
     </script>
 </body>
 </html>
-
-
