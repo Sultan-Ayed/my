@@ -8,18 +8,24 @@
 body {
     margin: 0;
     padding: 0;
-    /* خلفية تجمع بين اللون الداكن وصورة تقنية باهتة */
-    background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.95)), 
-                url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2000');
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
+    /* ألوان فخمة متغيرة: أسود، رمادي داكن، ولمحة ذهبية خافتة */
+    background: linear-gradient(-45deg, #000000, #1a1a1a, #0a0a0a, #141108);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
     font-family: 'Cairo', sans-serif;
     color: white;
     display: flex;
     justify-content: center;
     min-height: 100vh;
     direction: rtl;
+    overflow-x: hidden;
+}
+
+/* حركة التدرج اللوني */
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 .bio-container {
@@ -157,5 +163,6 @@ h1 { font-size: 24px; font-weight: 700; margin: 10px 0; letter-spacing: 1px; }
 }
 .close-btn { position: absolute; top: 10px; right: 15px; font-size: 25px; cursor: pointer; color: var(--gold); }
 button.link-item { width: 100%; cursor: none; border: 1px solid var(--glass-border); }
+
 
 
