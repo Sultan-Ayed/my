@@ -33,6 +33,20 @@ body {
     max-width: 420px;
     padding: 50px 20px;
     text-align: center;
+    .bio-container {
+    position: relative; /* أضف هذا السطر */
+    z-index: 10;        /* أضف هذا السطر لرفعها فوق الجزيئات */
+    width: 100%;
+    max-width: 420px;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+/* تأكد من جعل الخلفية شفافة قليلاً في الـ body إذا كنت تريد رؤية الحركة بوضوح */
+body {
+    background-color: #050505; /* لون أساسي غامق */
+    overflow-x: hidden;
+}
     z-index: 1;
 }
 
@@ -163,6 +177,7 @@ h1 { font-size: 24px; font-weight: 700; margin: 10px 0; letter-spacing: 1px; }
 }
 .close-btn { position: absolute; top: 10px; right: 15px; font-size: 25px; cursor: pointer; color: var(--gold); }
 button.link-item { width: 100%; cursor: none; border: 1px solid var(--glass-border); }
+
 
 
 
