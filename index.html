@@ -62,6 +62,26 @@
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
     <script>
+
+        // مصفوفة من الأحداث التي تعتبر "تفاعلاً" من المستخدم
+const events = ['click', 'mousedown', 'touchstart', 'scroll', 'keydown'];
+
+function playAudio() {
+    const audio = document.getElementById('bgMusic');
+    audio.play().then(() => {
+        // بمجرد أن ينجح التشغيل، نقوم بحذف المراقبين لتوفير موارد الجهاز
+        events.forEach(event => {
+            window.removeEventListener(event, playAudio);
+        });
+    }).catch(error => {
+        console.log("المتصفح مازال ينتظر تفاعل المستخدم...");
+    });
+}
+
+// إضافة مراقب لكل أنواع التفاعل الممكنة
+events.forEach(event => {
+    window.addEventListener(event, playAudio);
+});
         // 1. كود تشغيل الجزيئات (Particles)
         particlesJS('particles-js', {
             "particles": {
@@ -107,4 +127,5 @@
     </script>
 </body>
 </html>
+
 
