@@ -8,7 +8,7 @@
 body {
     margin: 0;
     padding: 0;
-    /* ألوان فخمة متغيرة: أسود، رمادي داكن، ولمحة ذهبية خافتة */
+    /* خلفية فخمة بتدرج لوني متحرك */
     background: linear-gradient(-45deg, #000000, #1a1a1a, #0a0a0a, #141108);
     background-size: 400% 400%;
     animation: gradientAnimation 15s ease infinite;
@@ -21,7 +21,6 @@ body {
     overflow-x: hidden;
 }
 
-/* حركة التدرج اللوني */
 @keyframes gradientAnimation {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -29,28 +28,15 @@ body {
 }
 
 .bio-container {
+    position: relative;
     width: 100%;
     max-width: 420px;
     padding: 50px 20px;
     text-align: center;
-    .bio-container {
-    position: relative; /* أضف هذا السطر */
-    z-index: 10;        /* أضف هذا السطر لرفعها فوق الجزيئات */
-    width: 100%;
-    max-width: 420px;
-    padding: 50px 20px;
-    text-align: center;
+    z-index: 10; /* لضمان ظهور المحتوى فوق الجزيئات */
 }
 
-/* تأكد من جعل الخلفية شفافة قليلاً في الـ body إذا كنت تريد رؤية الحركة بوضوح */
-body {
-    background-color: #050505; /* لون أساسي غامق */
-    overflow-x: hidden;
-}
-    z-index: 1;
-}
-
-/* صورة البروفيل مع تأثير النبض الذهبي */
+/* صورة البروفيل وتأثير النبض */
 .profile-wrapper {
     position: relative;
     width: 130px;
@@ -85,7 +71,7 @@ body {
 
 h1 { font-size: 24px; font-weight: 700; margin: 10px 0; letter-spacing: 1px; }
 .verified { color: #1da1f2; font-size: 18px; margin-right: 5px; }
-.tagline { color: var(--gold); font-size: 13px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; opacity: 0.9; }
+.tagline { color: var(--gold); font-size: 13px; letter-spacing: 2px; margin-bottom: 30px; opacity: 0.9; }
 
 /* أيقونات التواصل */
 .social-icons {
@@ -117,7 +103,7 @@ h1 { font-size: 24px; font-weight: 700; margin: 10px 0; letter-spacing: 1px; }
     box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
 }
 
-/* الأزرار الزجاجية */
+/* الأزرار */
 .links-list {
     display: flex;
     flex-direction: column;
@@ -129,19 +115,20 @@ h1 { font-size: 24px; font-weight: 700; margin: 10px 0; letter-spacing: 1px; }
     border: 1px solid var(--glass-border);
     padding: 18px 25px;
     border-radius: 15px;
-    text-decoration: none;
     color: white;
-    font-weight: 600;
     display: flex;
     align-items: center;
     transition: 0.3s;
     backdrop-filter: blur(10px);
+    cursor: pointer;
+    width: 100%;
+    font-family: 'Cairo', sans-serif;
 }
 
 .link-item:hover {
     background: rgba(212, 175, 55, 0.1);
     border-color: var(--gold);
-    transform: translateX(-5px);
+    transform: scale(1.02);
 }
 
 .link-item i {
@@ -153,15 +140,15 @@ h1 { font-size: 24px; font-weight: 700; margin: 10px 0; letter-spacing: 1px; }
 .link-item span {
     flex: 1;
     text-align: center;
-    font-size: 18px; /* حجم الخط الموحد */
-    font-weight: 700; /* جعل الخط عريض (Bold) مثل تواصل مباشر */
-    color: #ffffff;  /* التأكد من ثبات اللون الأبيض */
+    font-size: 18px;
+    font-weight: 700;
 }
 
 /* الماوس الذهبي */
 .cursor-dot { width: 6px; height: 6px; background: var(--gold); position: fixed; border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); }
 .cursor-outline { width: 30px; height: 30px; border: 1px solid var(--gold); position: fixed; border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); transition: 0.15s; }
-/* تنسيق النافذة المنبثقة */
+
+/* النافذة المنبثقة */
 .popup-overlay {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
@@ -169,15 +156,9 @@ h1 { font-size: 24px; font-weight: 700; margin: 10px 0; letter-spacing: 1px; }
     display: none; justify-content: center; align-items: center;
     z-index: 20000; backdrop-filter: blur(10px);
 }
-.popup-overlay.active { display: flex; }
 .popup-content {
     background: #111; border: 1px solid var(--gold);
     padding: 30px; border-radius: 20px; max-width: 90%; width: 400px;
     position: relative; text-align: center; color: white;
 }
 .close-btn { position: absolute; top: 10px; right: 15px; font-size: 25px; cursor: pointer; color: var(--gold); }
-button.link-item { width: 100%; cursor: none; border: 1px solid var(--glass-border); }
-
-
-
-
